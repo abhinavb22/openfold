@@ -1,0 +1,35 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+wandb: Currently logged in as: abhinav2212 (gohillab). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.17.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /scratch/10110/abhinav22/output_dir/wandb/run-20240908_010049-ofm0ut3a
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run full_train
+wandb: ⭐️ View project at https://wandb.ai/gohillab/openfold_training
+wandb: 🚀 View run at https://wandb.ai/gohillab/openfold_training/runs/ofm0ut3a
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+wandb: WARNING Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-PCIE-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+[rank: 0] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+Enabling DeepSpeed BF16. Model parameters and inputs will be cast to `bfloat16`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+
+  | Name  | Type          | Params | Mode 
+------------------------------------------------
+0 | model | AlphaFold     | 93.2 M | train
+1 | loss  | AlphaFoldLoss | 0      | train
+------------------------------------------------
+93.2 M    Trainable params
+0         Non-trainable params
+93.2 M    Total params
+372.895   Total estimated model params size (MB)
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+slurmstepd: error: *** JOB 1941170 ON c301-002 CANCELLED AT 2024-09-08T01:05:16 ***
+[rank: 0] Received SIGTERM: 15

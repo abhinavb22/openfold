@@ -3,7 +3,7 @@ import logging
 import os
 import sys
 import json
-
+import torch.distributed as dist
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks.lr_monitor import LearningRateMonitor
 from pytorch_lightning.callbacks import DeviceStatsMonitor
@@ -97,7 +97,7 @@ class OpenFoldWrapper(pl.LightningModule):
     def training_step(self, batch, batch_idx):
         if (self.ema.device != batch["aatype"].device):
             self.ema.to(batch["aatype"].device)
-
+        
         ground_truth = batch.pop('gt_features', None)
 
         # Run the model
@@ -264,9 +264,12 @@ class OpenFoldWrapper(pl.LightningModule):
             )
         )[0]
         model_version = "_".join(model_basename.split("_")[1:])
+        logging.warning('load from version'+model_version)
+
         import_jax_weights_(
             self.model, jax_path, version=model_version
         )
+        self.ema.load_from_jax = True # fix from issue 426
 
 def get_model_state_dict_from_ds_checkpoint(checkpoint_dir):
     latest_path = os.path.join(checkpoint_dir, 'latest')
@@ -287,7 +290,10 @@ def main(args):
 
     is_low_precision = args.precision in [
         "bf16-mixed", "16", "bf16", "16-true", "16-mixed", "bf16-mixed"]
-
+    #os.environ['WORLD_SIZE'] = '6'  # Total number of GPUs    
+    os.environ['WORLD_SIZE'] = '3'  # Total number of processes
+    os.environ['RANK'] = '0'  
+    dist.init_process_group(backend='nccl')
     config = model_config(
         args.config_preset, 
         train=True, 
@@ -389,7 +395,9 @@ def main(args):
         callbacks.append(lr_monitor)
 
     loggers = []
-    is_rank_zero = args.mpi_plugin and (int(os.environ.get("PMI_RANK")) == 0)
+    pmi_rank = os.environ.get("PMI_RANK")
+    is_rank_zero = args.mpi_plugin and (int(pmi_rank) == 0 if pmi_rank is not None else True)
+    #is_rank_zero = args.mpi_plugin and (int(os.environ.get("PMI_RANK")) == 0)
     if(args.wandb):
         if args.mpi_plugin and is_rank_zero:
             wandb_init_dict = dict(
@@ -440,6 +448,7 @@ def main(args):
         'strategy': strategy,
         'callbacks': callbacks,
         'logger': loggers,
+        'devices':3        
     })
     trainer = pl.Trainer(**trainer_args)
 
@@ -447,8 +456,16 @@ def main(args):
     if (args.resume_model_weights_only):
         ckpt_path = None
     else:
-        ckpt_path = args.resume_from_ckpt
+        ckpt_path = args.resume_from_ckpt    
 
+    print([torch.cuda.device_count(),args.gpus], flush=True)
+    print(f"Trainer device info:", flush=True)    
+    print(f"  Number of devices: {trainer.num_devices}", flush=True) 
+    print(f"  Number of nodes: {trainer.num_nodes}", flush=True)   
+    
+    print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE')}", flush=True)
+    print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK')}", flush=True)
+    #print(f"Number of GPUs in DeepSpeed config: {trainer.strategy.config}", flush=True)  
     trainer.fit(
         model_module,
         datamodule=data_module,

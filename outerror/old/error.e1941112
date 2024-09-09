@@ -1,0 +1,19 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 715, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 464, in main
+    trainer.fit(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 543, in fit
+    call._call_and_handle_interrupt(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 43, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 99, in launch
+    self.cluster_environment.validate_settings(num_devices=self.num_processes, num_nodes=self.num_nodes)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py", line 163, in validate_settings
+    raise ValueError(
+ValueError: You set `devices=3` in Lightning, but the number of tasks per node configured in SLURM `--ntasks-per-node=1` does not match. HINT: Set `devices=1`.

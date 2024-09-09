@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import gzip
 import os
 import copy
 import collections
@@ -705,7 +705,7 @@ class DataPipeline:
     ) -> Mapping[str, Any]:
         msa_data = {}
         if alignment_index is not None:
-            fp = open(os.path.join(alignment_dir, alignment_index["db"]), "rb")
+            fp = gzip.open(os.path.join(alignment_dir, alignment_index["db"]), "rb")
 
             def read_msa(start, size):
                 fp.seek(start)
@@ -743,6 +743,10 @@ class DataPipeline:
                         msa = parsers.parse_stockholm(
                             fp.read()
                         )
+                elif ext == ".sto.gz" and filename not in ["uniprot_hits", "hmm_output"]:
+                    with gzip.open(path, "rt", encoding="utf-8") as fp:
+                        msa = parsers.parse_stockholm(fp.read())
+        
                 else:
                     continue
 
@@ -1207,12 +1211,19 @@ class DataPipelineMultimer:
         else:
             uniprot_msa_path = os.path.join(alignment_dir, "uniprot_hits.sto")
             if not os.path.exists(uniprot_msa_path):
-                chain_id = os.path.basename(os.path.normpath(alignment_dir))
-                raise ValueError(f"Missing 'uniprot_hits.sto' for {chain_id}. "
-                                 f"This is required for Multimer MSA pairing.")
-
-            with open(uniprot_msa_path, "r") as fp:
-                uniprot_msa_string = fp.read()
+                uniprot_msa_path = os.path.join(alignment_dir, "uniprot_hits.sto.gz")
+                if os.path.exists(uniprot_msa_path):
+                    with gzip.open(uniprot_msa_path, "rt", encoding="utf-8") as fp:
+                        uniprot_msa_string = fp.read()
+                        
+                else:
+                    chain_id = os.path.basename(os.path.normpath(alignment_dir))
+                    raise ValueError(f"Missing 'uniprot_hits.sto' for {chain_id}. "
+                                     f"This is required for Multimer MSA pairing.")
+                                     
+            else:
+                with open(uniprot_msa_path, "r") as fp:
+                    uniprot_msa_string = fp.read()
             msa = parsers.parse_stockholm(uniprot_msa_string)
 
         all_seq_features = make_msa_features([msa])
@@ -1315,7 +1326,7 @@ class DataPipelineMultimer:
         is_homomer_or_monomer = len(set(list(mmcif.chain_to_seqres.values()))) == 1
         for chain_id, seq in mmcif.chain_to_seqres.items():
             desc= "_".join([mmcif.file_id, chain_id])
-
+            desc= ".".join([mmcif.file_id.split(".")[0], chain_id])
             if seq in sequence_features:
                 all_chain_features[desc] = copy.deepcopy(
                     sequence_features[seq]

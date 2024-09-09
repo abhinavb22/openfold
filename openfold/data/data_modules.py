@@ -460,6 +460,7 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
         if self.mode == 'train' or self.mode == 'eval':
             path = os.path.join(self.data_dir, f"{mmcif_id}")
             ext = None
+            
             for e in self.supported_exts:
                 if os.path.exists(path + e):
                     ext = e
@@ -1085,7 +1086,7 @@ class OpenFoldMultimerDataModule(OpenFoldDataModule):
         self.training_mode = self.train_data_dir is not None
         self.val_mmcif_data_cache_path = val_mmcif_data_cache_path
 
-    def setup(self, setup=None):
+    def setup(self, stage=None):
         # Most of the arguments are the same for the three datasets 
         dataset_gen = partial(OpenFoldSingleMultimerDataset,
                               template_mmcif_dir=self.template_mmcif_dir,

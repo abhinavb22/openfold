@@ -1,0 +1,99 @@
+[2024-09-08 01:06:23,127] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+WORLD_SIZE: 6
+LOCAL_RANK: None
+c301-002:2300458:2300458 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.2<0>
+c301-002:2300458:2300458 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-002:2300458:2300458 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-002:2300458:2300458 [0] NCCL INFO cudaDriverVersion 12020
+NCCL version 2.18.6+cuda12.1
+c301-002:2300458:2300530 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-002:2300458:2300530 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.2<0>
+c301-002:2300458:2300530 [0] NCCL INFO Using network Socket
+c301-002:2300458:2300530 [0] NCCL INFO comm 0x556096f1ce90 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x8347e8c7fb5648a5 - Init START
+c301-002:2300458:2300530 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2300458:2300530 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2300458:2300530 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2300458:2300530 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2300458:2300530 [0] NCCL INFO Connected all rings
+c301-002:2300458:2300530 [0] NCCL INFO Connected all trees
+c301-002:2300458:2300530 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2300458:2300530 [0] NCCL INFO comm 0x556096f1ce90 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x8347e8c7fb5648a5 - Init COMPLETE
+c301-002:2300458:2300535 [0] NCCL INFO Using network Socket
+c301-002:2300458:2300535 [0] NCCL INFO comm 0x55609aa17b60 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xdd1ea7aa2bbe4db7 - Init START
+c301-002:2300458:2300535 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2300458:2300535 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2300458:2300535 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2300458:2300535 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2300458:2300535 [0] NCCL INFO Connected all rings
+c301-002:2300458:2300535 [0] NCCL INFO Connected all trees
+c301-002:2300458:2300535 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2300458:2300535 [0] NCCL INFO comm 0x55609aa17b60 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xdd1ea7aa2bbe4db7 - Init COMPLETE
+Parameter Offload: Total persistent parameters: 59730713 in 4476 params
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] [2024-09-08 01:07:16,740] [WARNING] [parameter_offload.py:86:_apply_to_tensors_only] A module has unknown inputs or outputs type (<class 'openfold.utils.geometry.vector.Vec3Array'>) and the tensors embedded in it cannot be detected. The ZeRO-3 hooks designed to trigger before or after backward pass of the module relies on knowing the input and output tensors and therefore may not get triggered properly.
+Epoch 0:  20%|██        | 1/5 [00:28<01:54,  0.03it/s]Epoch 0:  20%|██        | 1/5 [00:28<01:54,  0.03it/s, v_num=ta2t, train/loss=62.20]

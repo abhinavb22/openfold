@@ -33,6 +33,7 @@ class ExponentialMovingAverage:
         self.params = tensor_tree_map(clone_param, model.state_dict())
         self.decay = decay
         self.device = next(model.parameters()).device
+        self.load_from_jax = False #issue 426 fix
 
     def to(self, device):
         self.params = tensor_tree_map(lambda t: t.to(device), self.params)
@@ -48,13 +49,22 @@ class ExponentialMovingAverage:
                     diff = stored - v
                     diff *= 1 - self.decay
                     stored -= diff
-
+                    
+    def repair_params_when_load_from_jax(self, state_dict: OrderedDict) -> None:
+        """ this function is a fix from issue 426"""
+        for k in state_dict.keys():
+            self.params[k] = state_dict[k].clone()
+            
     def update(self, model: torch.nn.Module) -> None:
         """
         Updates the stored parameters using the state dict of the provided
         module. The module should have the same structure as that used to
         initialize the ExponentialMovingAverage object.
         """
+        if self.load_from_jax:  #issue 426 fix
+            self.load_from_jax = False  #issue 426 fix
+            self.repair_params_when_load_from_jax(model.state_dict())  #issue 426 fix
+            
         self._update_state_dict_(model.state_dict(), self.params)
 
     def load_state_dict(self, state_dict: OrderedDict) -> None:

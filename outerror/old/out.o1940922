@@ -1,0 +1,26 @@
+
+[2024-09-07 16:57:56,115] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+Number of nodes: 2
+  Parallel devices: <pytorch_lightning.strategies.deepspeed.DeepSpeedStrategy object at 0x14935cfa6b60>
+Number of GPUs in DeepSpeed config: {'fp16': {'enabled': False, 'min_loss_scale': 1}, 'amp': {'enabled': False, 'opt_level': 'O2'}, 'bfloat16': {'enabled': True}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu'}, 'contiguous_gradients': True}, 'activation_checkpointing': {'partition_activations': True, 'cpu_checkpointing': False, 'profile': False}, 'gradient_clipping': 0.1, 'zero_force_ds_cpu_optimizer': False}
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Epoch 0:  20%|██        | 1/5 [00:26<01:47,  0.04it/s]Epoch 0:  20%|██        | 1/5 [00:26<01:47,  0.04it/s, v_num=lbmb, train/loss=61.80]Epoch 0:  40%|████      | 2/5 [01:49<02:43,  0.02it/s, v_num=lbmb, train/loss=61.80]Epoch 0:  40%|████      | 2/5 [01:49<02:43,  0.02it/s, v_num=lbmb, train/loss=47.70]Epoch 0:  60%|██████    | 3/5 [02:44<01:49,  0.02it/s, v_num=lbmb, train/loss=47.70]Epoch 0:  60%|██████    | 3/5 [02:44<01:49,  0.02it/s, v_num=lbmb, train/loss=232.0]Epoch 0:  80%|████████  | 4/5 [03:46<00:56,  0.02it/s, v_num=lbmb, train/loss=232.0]Epoch 0:  80%|████████  | 4/5 [03:46<00:56,  0.02it/s, v_num=lbmb, train/loss=52.10]Epoch 0: 100%|██████████| 5/5 [04:03<00:00,  0.02it/s, v_num=lbmb, train/loss=52.10]Epoch 0: 100%|██████████| 5/5 [04:03<00:00,  0.02it/s, v_num=lbmb, train/loss=45.60]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 1/36543 [01:11<730:27:13,  0.01it/s][A
+Validation DataLoader 0:   0%|          | 2/36543 [02:06<642:01:24,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 3/36543 [03:18<673:03:21,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 4/36543 [03:43<566:16:46,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 5/36543 [03:57<481:39:23,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 6/36543 [05:09<523:03:58,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 7/36543 [06:19<550:24:48,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 8/36543 [07:31<572:22:10,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 9/36543 [08:43<589:55:47,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 10/36543 [08:57<545:10:53,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 11/36543 [10:09<561:52:14,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 12/36543 [10:57<555:42:47,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 13/36543 [11:38<545:08:05,  0.02it/s][A
+Validation DataLoader 0:   0%|          | 14/36543 [12:50<558:19:39,  0.02it/s][A

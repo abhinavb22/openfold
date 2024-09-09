@@ -1,0 +1,8 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 720, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 395, in main
+    pmi_rank = os.environ.get("PMI_RANK")
+UnboundLocalError: local variable 'os' referenced before assignment

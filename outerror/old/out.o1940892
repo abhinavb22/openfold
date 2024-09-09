@@ -1,0 +1,7 @@
+
+[2024-09-07 16:13:06,154] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+Number of nodes: 2
+  Parallel devices: <pytorch_lightning.strategies.deepspeed.DeepSpeedStrategy object at 0x14f075419a20>

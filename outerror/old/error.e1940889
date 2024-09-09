@@ -1,0 +1,23 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 714, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 450, in main
+    trainer = pl.Trainer(**trainer_args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 400, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 146, in __init__
+    self._set_parallel_devices_and_init_accelerator()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 376, in _set_parallel_devices_and_init_accelerator
+    self._devices_flag = accelerator_cls.parse_devices(self._devices_flag)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/accelerators/cuda.py", line 88, in parse_devices
+    return _parse_gpu_ids(devices, include_cuda=True)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/utilities/device_parser.py", line 102, in _parse_gpu_ids
+    return _sanitize_gpu_ids(gpus, include_cuda=include_cuda, include_mps=include_mps)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/utilities/device_parser.py", line 135, in _sanitize_gpu_ids
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: You requested gpu: [0, 1, 2, 3, 4, 5]
+ But your machine only has: [0, 1, 2]

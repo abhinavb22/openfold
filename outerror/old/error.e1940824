@@ -1,0 +1,20 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 713, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 449, in main
+    trainer = pl.Trainer(**trainer_args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 400, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 149, in __init__
+    self.cluster_environment: ClusterEnvironment = self._choose_and_init_cluster_environment()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 409, in _choose_and_init_cluster_environment
+    return env_type()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py", line 54, in __init__
+    self._validate_srun_variables()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/plugins/environments/slurm.py", line 221, in _validate_srun_variables
+    raise RuntimeError(
+RuntimeError: You set `--ntasks=6` in your SLURM bash script, but this variable is not supported. HINT: Use `--ntasks-per-node=6` instead.

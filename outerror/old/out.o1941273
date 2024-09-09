@@ -1,0 +1,580 @@
+TACC:  Starting up job 1941273 
+TACC:  Starting parallel tasks... 
+[2024-09-08 09:55:21,029] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-08 09:55:21,030] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-08 09:55:21,031] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-08 09:55:21,033] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-08 09:55:21,033] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-08 09:55:21,044] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 6]
+[3, 6]
+Trainer device info:
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+  Number of devices: 3
+  Number of nodes: 2
+WORLD_SIZE: 6
+WORLD_SIZE: 6
+[3, 6]
+LOCAL_RANK: None
+LOCAL_RANK: None
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+WORLD_SIZE: 6
+LOCAL_RANK: None
+[3, 6]
+Trainer device info:
+[3, 6]
+  Number of devices: 3
+  Number of nodes: 2
+Trainer device info:
+WORLD_SIZE: 6
+  Number of devices: 3
+LOCAL_RANK: None
+  Number of nodes: 2
+WORLD_SIZE: 6
+LOCAL_RANK: None
+c301-002:2362389:2362389 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.2<0>
+c301-002:2362388:2362388 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.2<0>
+c301-002:2362388:2362388 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-002:2362388:2362388 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-002:2362389:2362389 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-002:2362389:2362389 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-003:773571:773571 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.3<0>
+c301-003:773573:773573 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.3<0>
+c301-003:773572:773572 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.3<0>
+c301-003:773571:773571 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-003:773571:773571 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-003:773573:773573 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-003:773573:773573 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-003:773572:773572 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-003:773572:773572 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-003:773571:773571 [0] NCCL INFO cudaDriverVersion 12020
+c301-003:773573:773573 [0] NCCL INFO cudaDriverVersion 12020
+c301-003:773572:773572 [0] NCCL INFO cudaDriverVersion 12020
+c301-002:2362388:2362388 [0] NCCL INFO cudaDriverVersion 12020
+c301-002:2362389:2362389 [0] NCCL INFO cudaDriverVersion 12020
+NCCL version 2.18.6+cuda12.1
+NCCL version 2.18.6+cuda12.1
+NCCL version 2.18.6+cuda12.1
+NCCL version 2.18.6+cuda12.1
+NCCL version 2.18.6+cuda12.1
+c301-002:2362388:2362654 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-002:2362389:2362655 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-002:2362389:2362655 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.2<0>
+c301-002:2362389:2362655 [0] NCCL INFO Using network Socket
+c301-002:2362388:2362654 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.2<0>
+c301-002:2362388:2362654 [0] NCCL INFO Using network Socket
+c301-002:2362389:2362655 [0] NCCL INFO comm 0x561d04a320a0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xad7115e056935992 - Init START
+c301-002:2362388:2362654 [0] NCCL INFO comm 0x55fbf379e220 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x399d03326e52c9e8 - Init START
+c301-003:773571:773880 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-003:773573:773882 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-003:773572:773881 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-003:773571:773880 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.3<0>
+c301-003:773573:773882 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.3<0>
+c301-003:773573:773882 [0] NCCL INFO Using network Socket
+c301-003:773572:773881 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.3<0>
+c301-003:773572:773881 [0] NCCL INFO Using network Socket
+c301-003:773571:773880 [0] NCCL INFO Using network Socket
+c301-003:773573:773882 [0] NCCL INFO comm 0x55656db68500 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x2ee98dead0ee1014 - Init START
+c301-003:773571:773880 [0] NCCL INFO comm 0x55dcac72e8e0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x2bf74782cafaa35f - Init START
+c301-003:773572:773881 [0] NCCL INFO comm 0x5583765867d0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xb9d8e19feb7b7843 - Init START
+c301-002:2362388:2362654 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2362389:2362655 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2362388:2362654 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2362388:2362654 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2362388:2362654 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362389:2362655 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2362389:2362655 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2362389:2362655 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362388:2362654 [0] NCCL INFO Connected all rings
+c301-002:2362388:2362654 [0] NCCL INFO Connected all trees
+c301-002:2362388:2362654 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2362389:2362655 [0] NCCL INFO Connected all rings
+c301-002:2362389:2362655 [0] NCCL INFO Connected all trees
+c301-002:2362389:2362655 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773571:773880 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-003:773573:773882 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-003:773571:773880 [0] NCCL INFO Channel 00/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 01/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 02/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 03/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 04/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 05/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 06/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 07/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 08/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 09/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 10/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 11/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 12/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 13/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 14/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 00/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 01/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 02/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 03/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 04/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 05/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 06/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 07/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 08/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 09/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 10/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 11/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 12/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 13/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 14/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 15/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 16/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 17/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 18/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 19/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 20/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 21/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 22/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 23/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 24/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 25/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 26/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 27/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 28/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 29/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 30/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Channel 31/32 :    0
+c301-003:773573:773882 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-003:773573:773882 [0] NCCL INFO P2P Chunksize set to 131072
+c301-003:773572:773881 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-003:773572:773881 [0] NCCL INFO Channel 00/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 01/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 02/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 03/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 04/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 05/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 06/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 07/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 08/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 09/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 10/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 11/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 12/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 13/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 14/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 15/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 16/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 17/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 18/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 19/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 20/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 21/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 22/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 23/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 24/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 25/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 26/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 27/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 28/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 29/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 30/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Channel 31/32 :    0
+c301-003:773572:773881 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-003:773572:773881 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362388:2362654 [0] NCCL INFO comm 0x55fbf379e220 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x399d03326e52c9e8 - Init COMPLETE
+c301-003:773571:773880 [0] NCCL INFO Channel 15/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 16/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 17/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 18/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 19/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 20/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 21/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 22/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 23/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 24/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 25/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 26/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 27/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 28/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 29/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 30/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Channel 31/32 :    0
+c301-003:773571:773880 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-003:773571:773880 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362389:2362655 [0] NCCL INFO comm 0x561d04a320a0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xad7115e056935992 - Init COMPLETE
+c301-003:773573:773882 [0] NCCL INFO Connected all rings
+c301-003:773573:773882 [0] NCCL INFO Connected all trees
+c301-003:773573:773882 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773572:773881 [0] NCCL INFO Connected all rings
+c301-003:773572:773881 [0] NCCL INFO Connected all trees
+c301-003:773572:773881 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773571:773880 [0] NCCL INFO Connected all rings
+c301-003:773571:773880 [0] NCCL INFO Connected all trees
+c301-003:773571:773880 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773573:773882 [0] NCCL INFO comm 0x55656db68500 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x2ee98dead0ee1014 - Init COMPLETE
+c301-003:773571:773880 [0] NCCL INFO comm 0x55dcac72e8e0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x2bf74782cafaa35f - Init COMPLETE
+c301-003:773572:773881 [0] NCCL INFO comm 0x5583765867d0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xb9d8e19feb7b7843 - Init COMPLETE
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+WORLD_SIZE: 6
+LOCAL_RANK: None
+c301-002:2362390:2362390 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.2<0>
+c301-002:2362390:2362390 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-002:2362390:2362390 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-002:2362390:2362390 [0] NCCL INFO cudaDriverVersion 12020
+NCCL version 2.18.6+cuda12.1
+c301-002:2362390:2362667 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-002:2362390:2362667 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.2<0>
+c301-002:2362390:2362667 [0] NCCL INFO Using network Socket
+c301-002:2362390:2362667 [0] NCCL INFO comm 0x56168ed41f00 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x3bd5f377447036d0 - Init START
+c301-002:2362390:2362667 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2362390:2362667 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2362390:2362667 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2362390:2362667 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362390:2362667 [0] NCCL INFO Connected all rings
+c301-002:2362390:2362667 [0] NCCL INFO Connected all trees
+c301-002:2362390:2362667 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2362390:2362667 [0] NCCL INFO comm 0x56168ed41f00 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x3bd5f377447036d0 - Init COMPLETE
+c301-002:2362389:2362672 [0] NCCL INFO Using network Socket
+c301-002:2362389:2362672 [0] NCCL INFO comm 0x561d125c92d0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x71e1c842873f7db3 - Init START
+c301-002:2362389:2362672 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2362389:2362672 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2362389:2362672 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2362389:2362672 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362389:2362672 [0] NCCL INFO Connected all rings
+c301-002:2362389:2362672 [0] NCCL INFO Connected all trees
+c301-002:2362389:2362672 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773572:773891 [0] NCCL INFO Using network Socket
+c301-003:773572:773891 [0] NCCL INFO comm 0x55837a0816f0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xad1fa9b990439299 - Init START
+c301-002:2362389:2362672 [0] NCCL INFO comm 0x561d125c92d0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x71e1c842873f7db3 - Init COMPLETE
+c301-003:773572:773891 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-003:773572:773891 [0] NCCL INFO Channel 00/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 01/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 02/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 03/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 04/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 05/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 06/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 07/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 08/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 09/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 10/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 11/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 12/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 13/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 14/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 15/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 16/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 17/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 18/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 19/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 20/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 21/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 22/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 23/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 24/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 25/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 26/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 27/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 28/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 29/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 30/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Channel 31/32 :    0
+c301-003:773572:773891 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-003:773572:773891 [0] NCCL INFO P2P Chunksize set to 131072
+c301-003:773572:773891 [0] NCCL INFO Connected all rings
+c301-003:773572:773891 [0] NCCL INFO Connected all trees
+c301-003:773572:773891 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773572:773891 [0] NCCL INFO comm 0x55837a0816f0 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xad1fa9b990439299 - Init COMPLETE
+c301-002:2362388:2362677 [0] NCCL INFO Using network Socket
+c301-002:2362388:2362677 [0] NCCL INFO comm 0x55fbb7647900 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xebc34e47d5326cb6 - Init START
+c301-002:2362388:2362677 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2362388:2362677 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2362388:2362677 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2362388:2362677 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362388:2362677 [0] NCCL INFO Connected all rings
+c301-002:2362388:2362677 [0] NCCL INFO Connected all trees
+c301-002:2362388:2362677 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2362388:2362677 [0] NCCL INFO comm 0x55fbb7647900 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xebc34e47d5326cb6 - Init COMPLETE
+c301-003:773571:773896 [0] NCCL INFO Using network Socket
+c301-003:773571:773896 [0] NCCL INFO comm 0x55dcbdc4c760 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x63e127a58dce7388 - Init START
+c301-003:773571:773896 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-003:773571:773896 [0] NCCL INFO Channel 00/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 01/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 02/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 03/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 04/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 05/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 06/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 07/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 08/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 09/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 10/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 11/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 12/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 13/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 14/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 15/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 16/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 17/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 18/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 19/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 20/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 21/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 22/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 23/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 24/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 25/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 26/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 27/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 28/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 29/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 30/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Channel 31/32 :    0
+c301-003:773571:773896 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-003:773571:773896 [0] NCCL INFO P2P Chunksize set to 131072
+c301-003:773571:773896 [0] NCCL INFO Connected all rings
+c301-003:773571:773896 [0] NCCL INFO Connected all trees
+c301-003:773571:773896 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773571:773896 [0] NCCL INFO comm 0x55dcbdc4c760 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x63e127a58dce7388 - Init COMPLETE
+c301-003:773573:773901 [0] NCCL INFO Using network Socket
+c301-003:773573:773901 [0] NCCL INFO comm 0x55657b960370 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xbb8d2e274d1f21dd - Init START
+c301-003:773573:773901 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-003:773573:773901 [0] NCCL INFO Channel 00/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 01/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 02/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 03/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 04/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 05/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 06/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 07/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 08/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 09/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 10/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 11/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 12/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 13/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 14/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 15/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 16/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 17/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 18/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 19/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 20/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 21/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 22/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 23/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 24/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 25/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 26/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 27/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 28/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 29/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 30/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Channel 31/32 :    0
+c301-003:773573:773901 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-003:773573:773901 [0] NCCL INFO P2P Chunksize set to 131072
+c301-003:773573:773901 [0] NCCL INFO Connected all rings
+c301-003:773573:773901 [0] NCCL INFO Connected all trees
+c301-003:773573:773901 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-003:773573:773901 [0] NCCL INFO comm 0x55657b960370 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0xbb8d2e274d1f21dd - Init COMPLETE
+c301-002:2362390:2362682 [0] NCCL INFO Using network Socket
+c301-002:2362390:2362682 [0] NCCL INFO comm 0x561692839c70 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x7426a4e22a6c44d8 - Init START
+c301-002:2362390:2362682 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2362390:2362682 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2362390:2362682 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2362390:2362682 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2362390:2362682 [0] NCCL INFO Connected all rings
+c301-002:2362390:2362682 [0] NCCL INFO Connected all trees
+c301-002:2362390:2362682 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2362390:2362682 [0] NCCL INFO comm 0x561692839c70 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x7426a4e22a6c44d8 - Init COMPLETE
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] TACC:  MPI job exited with code: 143 
+TACC:  Shutdown complete. Exiting. 

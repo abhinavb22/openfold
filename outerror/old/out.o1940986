@@ -1,0 +1,8 @@
+[2024-09-07 19:31:00,696] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 1
+  Parallel devices: <pytorch_lightning.strategies.deepspeed.DeepSpeedStrategy object at 0x1485f5d4a9b0>
+Number of GPUs in DeepSpeed config: {'fp16': {'enabled': False, 'min_loss_scale': 1}, 'amp': {'enabled': False, 'opt_level': 'O2'}, 'bfloat16': {'enabled': True}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu'}, 'contiguous_gradients': True}, 'activation_checkpointing': {'partition_activations': True, 'cpu_checkpointing': False, 'profile': False}, 'gradient_clipping': 0.1, 'zero_force_ds_cpu_optimizer': False}
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/2 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/2 [00:00<?, ?it/s] 

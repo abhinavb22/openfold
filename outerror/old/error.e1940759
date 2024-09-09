@@ -1,0 +1,8 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 706, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 395, in main
+    is_rank_zero = args.mpi_plugin and (int(os.environ.get("PMI_RANK")) == 0)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'

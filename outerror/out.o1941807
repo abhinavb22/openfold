@@ -1,0 +1,1 @@
+[2024-09-08 22:28:53,794] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)

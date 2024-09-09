@@ -425,8 +425,8 @@ config = mlc.ConfigDict(
                 "max_extra_msa": 1024,
                 "max_template_hits": 4,
                 "max_templates": 4,
-                "crop": False,
-                "crop_size": None,
+                "crop": False, 
+                "crop_size": None, 
                 "spatial_crop_prob": None,
                 "interface_threshold": None,
                 "supervised": True,
@@ -822,13 +822,17 @@ multimer_config_update = mlc.ConfigDict({
         },
         "eval": {
             "max_msa_clusters": 508,
-            "max_extra_msa": 2048
+            "max_extra_msa": 2048,
+            "crop": True, #False
+            "crop_size": 384, #None
+            "spatial_crop_prob": 0.5,
+            "interface_threshold": 10.,
         },
         "train": {
             "max_msa_clusters": 508,
             "max_extra_msa": 2048,
             "block_delete_msa" : False,
-            "crop_size": 640,
+            "crop_size": 384, #640 
             "spatial_crop_prob": 0.5,
             "interface_threshold": 10.,
             "clamp_prob": 1.,

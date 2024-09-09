@@ -1,0 +1,70 @@
+[2024-09-07 00:27:14,642] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/scratch/10110/abhinav22/mmcif_dir/train/6tmg-assembly1.H.Q
+/scratch/10110/abhinav22/mmcif_dir/train/6ih8-assembly1.B.D
+/scratch/10110/abhinav22/mmcif_dir/train/5nja-assembly2.C.D
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/3 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/3 [00:00<?, ?it/s] Epoch 0:  33%|███▎      | 1/3 [00:24<00:49,  0.04it/s]Epoch 0:  33%|███▎      | 1/3 [00:24<00:49,  0.04it/s, v_num=fvbc, train/loss=43.80]Epoch 0:  67%|██████▋   | 2/3 [01:36<00:48,  0.02it/s, v_num=fvbc, train/loss=43.80]Epoch 0:  67%|██████▋   | 2/3 [01:36<00:48,  0.02it/s, v_num=fvbc, train/loss=59.80]Epoch 0: 100%|██████████| 3/3 [02:08<00:00,  0.02it/s, v_num=fvbc, train/loss=59.80]Epoch 0: 100%|██████████| 3/3 [02:08<00:00,  0.02it/s, v_num=fvbc, train/loss=129.0]/scratch/10110/abhinav22/mmcif_dir/val/5h8i-assembly1.E.G
+/scratch/10110/abhinav22/mmcif_dir/val/6v7b-assembly1.G.DA
+/scratch/10110/abhinav22/mmcif_dir/val/1a6c-assembly1.A-7.A-32
+/scratch/10110/abhinav22/mmcif_dir/val/1o05-assembly1.A.C
+/scratch/10110/abhinav22/mmcif_dir/val/6bnk-assembly2.E.F
+/scratch/10110/abhinav22/mmcif_dir/val/1gt7-assembly5.F-2.G-2
+/scratch/10110/abhinav22/mmcif_dir/val/3onr-assembly1.B.C
+/scratch/10110/abhinav22/mmcif_dir/val/4eld-assembly1.A.B-16
+/scratch/10110/abhinav22/mmcif_dir/val/2ntu-assembly1.A.A-2
+/scratch/10110/abhinav22/mmcif_dir/val/4qv9-assembly1.V.W
+/scratch/10110/abhinav22/mmcif_dir/val/4z3x-assembly1.E.F
+/scratch/10110/abhinav22/mmcif_dir/val/3zc0-assembly2.B.A-3
+/scratch/10110/abhinav22/mmcif_dir/val/3jd6-assembly1.A-5.A-6
+/scratch/10110/abhinav22/mmcif_dir/val/1tkk-assembly1.B.G
+/scratch/10110/abhinav22/mmcif_dir/val/2a3t-assembly1.A-2.A-3
+/scratch/10110/abhinav22/mmcif_dir/val/6m66-assembly1.B.C
+
+Validation: |          | 0/? [00:00<?, ?it/s][A/scratch/10110/abhinav22/mmcif_dir/val/2no0-assembly3.A-2.B-2
+/scratch/10110/abhinav22/mmcif_dir/val/6zlm-assembly1.Y.JB
+/scratch/10110/abhinav22/mmcif_dir/val/6zvk-assembly1.L.OA
+/scratch/10110/abhinav22/mmcif_dir/val/1krq-assembly2.A-16.A-17
+/scratch/10110/abhinav22/mmcif_dir/val/7nvr-assembly1.D.EA
+/scratch/10110/abhinav22/mmcif_dir/val/3mvd-assembly1.E.F
+/scratch/10110/abhinav22/mmcif_dir/val/1pk8-assembly1.B.D
+/scratch/10110/abhinav22/mmcif_dir/val/4la4-assembly1.A-2.B-2
+/scratch/10110/abhinav22/mmcif_dir/val/3mn1-assembly2.B.K
+
+Validation:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/36543 [00:00<?, ?it/s][A/scratch/10110/abhinav22/mmcif_dir/val/5mlc-assembly1.K.P
+/scratch/10110/abhinav22/mmcif_dir/val/5ouw-assembly1.A-2.A-10
+/scratch/10110/abhinav22/mmcif_dir/val/5kel-assembly1.O.P
+/scratch/10110/abhinav22/mmcif_dir/val/5z8u-assembly1.B.A-3
+/scratch/10110/abhinav22/mmcif_dir/val/6znl-assembly1.M.N
+/scratch/10110/abhinav22/mmcif_dir/val/6qry-assembly1.A-2.A-3
+/scratch/10110/abhinav22/mmcif_dir/val/6wx6-assembly1.A.Q
+/scratch/10110/abhinav22/mmcif_dir/val/1f30-assembly2.G-3.H-3
+
+Validation DataLoader 0:   0%|          | 1/36543 [01:11<729:04:23,  0.01it/s][A/scratch/10110/abhinav22/mmcif_dir/val/6xrf-assembly1.B.C
+
+Validation DataLoader 0:   0%|          | 2/36543 [02:23<725:46:48,  0.01it/s][A/scratch/10110/abhinav22/mmcif_dir/val/6c4i-assembly1.LA.OA
+
+Validation DataLoader 0:   0%|          | 3/36543 [03:35<728:31:26,  0.01it/s][A/scratch/10110/abhinav22/mmcif_dir/val/5f5u-assembly2.D.E
+
+Validation DataLoader 0:   0%|          | 4/36543 [04:03<617:03:20,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/3fb7-assembly1.A.B
+
+Validation DataLoader 0:   0%|          | 5/36543 [04:17<522:12:57,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/1knf-assembly1.A.A-3
+
+Validation DataLoader 0:   0%|          | 6/36543 [05:29<556:42:38,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/4v7t-assembly1.C.N
+
+Validation DataLoader 0:   0%|          | 7/36543 [06:39<579:18:55,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/7bb6-assembly1.A.C
+
+Validation DataLoader 0:   0%|          | 8/36543 [07:51<597:31:14,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/2ptm-assembly1.A-2.A-3
+
+Validation DataLoader 0:   0%|          | 9/36543 [09:02<612:09:05,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/4wym-assembly2.G.H
+
+Validation DataLoader 0:   0%|          | 10/36543 [09:17<565:15:14,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/5t0g-assembly1.Q.R
+
+Validation DataLoader 0:   0%|          | 11/36543 [10:28<579:55:04,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/5l66-assembly1.T.U
+
+Validation DataLoader 0:   0%|          | 12/36543 [10:56<554:57:10,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/2y0d-assembly1.B.D
+
+Validation DataLoader 0:   0%|          | 13/36543 [11:37<544:33:48,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/2pm6-assembly1.A.C
+
+Validation DataLoader 0:   0%|          | 14/36543 [12:49<557:40:22,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/6r25-assembly1.H.I
+
+Validation DataLoader 0:   0%|          | 15/36543 [13:47<559:50:31,  0.02it/s][A/scratch/10110/abhinav22/mmcif_dir/val/2ork-assembly1.A.B

@@ -1,0 +1,99 @@
+[2024-09-08 00:36:12,669] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+  Parallel devices: <pytorch_lightning.strategies.deepspeed.DeepSpeedStrategy object at 0x14d238b2ec80>
+c301-002:2288936:2288936 [0] NCCL INFO Bootstrap : Using ib0:192.168.41.2<0>
+c301-002:2288936:2288936 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c301-002:2288936:2288936 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c301-002:2288936:2288936 [0] NCCL INFO cudaDriverVersion 12020
+NCCL version 2.18.6+cuda12.1
+c301-002:2288936:2289007 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c301-002:2288936:2289007 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.41.2<0>
+c301-002:2288936:2289007 [0] NCCL INFO Using network Socket
+c301-002:2288936:2289007 [0] NCCL INFO comm 0x55872eba6d50 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x5c77160da5edd213 - Init START
+c301-002:2288936:2289007 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2288936:2289007 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2288936:2289007 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2288936:2289007 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2288936:2289007 [0] NCCL INFO Connected all rings
+c301-002:2288936:2289007 [0] NCCL INFO Connected all trees
+c301-002:2288936:2289007 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2288936:2289007 [0] NCCL INFO comm 0x55872eba6d50 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x5c77160da5edd213 - Init COMPLETE
+c301-002:2288936:2289012 [0] NCCL INFO Using network Socket
+c301-002:2288936:2289012 [0] NCCL INFO comm 0x55873269ef60 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x109ae0fe4bc1701e - Init START
+c301-002:2288936:2289012 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c301-002:2288936:2289012 [0] NCCL INFO Channel 00/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 01/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 02/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 03/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 04/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 05/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 06/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 07/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 08/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 09/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 10/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 11/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 12/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 13/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 14/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 15/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 16/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 17/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 18/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 19/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 20/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 21/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 22/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 23/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 24/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 25/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 26/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 27/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 28/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 29/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 30/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Channel 31/32 :    0
+c301-002:2288936:2289012 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c301-002:2288936:2289012 [0] NCCL INFO P2P Chunksize set to 131072
+c301-002:2288936:2289012 [0] NCCL INFO Connected all rings
+c301-002:2288936:2289012 [0] NCCL INFO Connected all trees
+c301-002:2288936:2289012 [0] NCCL INFO 32 coll channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c301-002:2288936:2289012 [0] NCCL INFO comm 0x55873269ef60 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 21000 commId 0x109ae0fe4bc1701e - Init COMPLETE
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Epoch 0:  20%|██        | 1/5 [00:27<01:50,  0.04it/s]Epoch 0:  20%|██        | 1/5 [00:27<01:50,  0.04it/s, v_num=ca15, train/loss=62.20]Epoch 0:  40%|████      | 2/5 [01:48<02:42,  0.02it/s, v_num=ca15, train/loss=62.20]Epoch 0:  40%|████      | 2/5 [01:48<02:42,  0.02it/s, v_num=ca15, train/loss=49.00]Epoch 0:  60%|██████    | 3/5 [02:30<01:40,  0.02it/s, v_num=ca15, train/loss=49.00]Epoch 0:  60%|██████    | 3/5 [02:30<01:40,  0.02it/s, v_num=ca15, train/loss=228.0]Epoch 0:  80%|████████  | 4/5 [03:32<00:53,  0.02it/s, v_num=ca15, train/loss=228.0]Epoch 0:  80%|████████  | 4/5 [03:32<00:53,  0.02it/s, v_num=ca15, train/loss=52.80]Epoch 0: 100%|██████████| 5/5 [03:49<00:00,  0.02it/s, v_num=ca15, train/loss=52.80]Epoch 0: 100%|██████████| 5/5 [03:49<00:00,  0.02it/s, v_num=ca15, train/loss=46.20]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/36543 [00:00<?, ?it/s][A

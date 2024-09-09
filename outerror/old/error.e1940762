@@ -1,0 +1,5 @@
+slurmstepd: error: execve(): /work/10110/abhinav22/ls6/openfold/openfold_training_debug.sh: Exec format error
+srun: error: c301-002: task 0: Exited with exit code 8
+srun: Terminating StepId=1940762.0
+slurmstepd: error: execve(): /work/10110/abhinav22/ls6/openfold/openfold_training_debug.sh: Exec format error
+srun: error: c301-003: task 1: Exited with exit code 8

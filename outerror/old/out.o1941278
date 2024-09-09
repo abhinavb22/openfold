@@ -1,0 +1,23 @@
+TACC:  Starting up job 1941278 
+TACC:  Starting parallel tasks... 
+[2024-09-08 10:05:21,472] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-08 10:05:21,472] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+WORLD_SIZE: 6
+LOCAL_RANK: None
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 2
+WORLD_SIZE: 6
+LOCAL_RANK: None
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Epoch 0:  20%|██        | 1/5 [00:26<01:46,  0.04it/s]Epoch 0:  20%|██        | 1/5 [00:26<01:46,  0.04it/s, v_num=o2xf, train/loss=62.20]Epoch 0:  40%|████      | 2/5 [01:48<02:42,  0.02it/s, v_num=o2xf, train/loss=62.20]Epoch 0:  40%|████      | 2/5 [01:48<02:42,  0.02it/s, v_num=o2xf, train/loss=49.00]Epoch 0:  60%|██████    | 3/5 [02:29<01:39,  0.02it/s, v_num=o2xf, train/loss=49.00]Epoch 0:  60%|██████    | 3/5 [02:29<01:39,  0.02it/s, v_num=o2xf, train/loss=228.0]Epoch 0:  80%|████████  | 4/5 [03:31<00:52,  0.02it/s, v_num=o2xf, train/loss=228.0]Epoch 0:  80%|████████  | 4/5 [03:31<00:52,  0.02it/s, v_num=o2xf, train/loss=52.80]Epoch 0: 100%|██████████| 5/5 [03:48<00:00,  0.02it/s, v_num=o2xf, train/loss=52.80]Epoch 0: 100%|██████████| 5/5 [03:48<00:00,  0.02it/s, v_num=o2xf, train/loss=46.20]
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Epoch 0:  20%|██        | 1/5 [00:27<01:51,  0.04it/s]Epoch 0:  20%|██        | 1/5 [00:27<01:51,  0.04it/s, v_num=n2qe, train/loss=62.20]Epoch 0:  40%|████      | 2/5 [01:50<02:46,  0.02it/s, v_num=n2qe, train/loss=62.20]Epoch 0:  40%|████      | 2/5 [01:50<02:46,  0.02it/s, v_num=n2qe, train/loss=49.00]Epoch 0:  60%|██████    | 3/5 [02:32<01:41,  0.02it/s, v_num=n2qe, train/loss=49.00]Epoch 0:  60%|██████    | 3/5 [02:32<01:41,  0.02it/s, v_num=n2qe, train/loss=228.0]Epoch 0:  80%|████████  | 4/5 [03:34<00:53,  0.02it/s, v_num=n2qe, train/loss=228.0]Epoch 0:  80%|████████  | 4/5 [03:34<00:53,  0.02it/s, v_num=n2qe, train/loss=52.80]Epoch 0: 100%|██████████| 5/5 [03:51<00:00,  0.02it/s, v_num=n2qe, train/loss=52.80]Epoch 0: 100%|██████████| 5/5 [03:51<00:00,  0.02it/s, v_num=n2qe, train/loss=46.20]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/36543 [00:00<?, ?it/s][AValidation DataLoader 0:   0%|          | 0/36543 [00:00<?, ?it/s][A

@@ -1,0 +1,14 @@
+
+[2024-09-07 16:54:10,965] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 6]
+Trainer device info:
+  Number of devices: 3
+Number of nodes: 2
+  Parallel devices: <pytorch_lightning.strategies.deepspeed.DeepSpeedStrategy object at 0x15288707a860>
+SLURM_GPUS: None
+SLURM_GPUS_ON_NODE: None
+SLURM_JOB_GPUS: None
+SLURM_STEP_GPUS: None
+GPU_DEVICE_ORDINAL: None
+CUDA_VISIBLE_DEVICES: None
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] 

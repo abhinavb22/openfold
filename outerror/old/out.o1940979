@@ -1,0 +1,14 @@
+
+0
+[2024-09-07 19:12:31,188] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[1, 1]
+Trainer device info:
+  Number of devices: 1
+  Number of nodes: 1
+  Parallel devices: <pytorch_lightning.strategies.deepspeed.DeepSpeedStrategy object at 0x14eb6ee26b30>
+Number of GPUs in DeepSpeed config: {'fp16': {'enabled': False, 'min_loss_scale': 1}, 'amp': {'enabled': False, 'opt_level': 'O2'}, 'bfloat16': {'enabled': True}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu'}, 'contiguous_gradients': True}, 'activation_checkpointing': {'partition_activations': True, 'cpu_checkpointing': False, 'profile': False}, 'gradient_clipping': 0.1, 'zero_force_ds_cpu_optimizer': False}
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s] Epoch 0:  20%|██        | 1/5 [00:28<01:52,  0.04it/s]Epoch 0:  20%|██        | 1/5 [00:28<01:52,  0.04it/s, v_num=nkwx, train/loss=61.80]Epoch 0:  40%|████      | 2/5 [01:49<02:43,  0.02it/s, v_num=nkwx, train/loss=61.80]Epoch 0:  40%|████      | 2/5 [01:49<02:43,  0.02it/s, v_num=nkwx, train/loss=47.70]Epoch 0:  60%|██████    | 3/5 [02:43<01:49,  0.02it/s, v_num=nkwx, train/loss=47.70]Epoch 0:  60%|██████    | 3/5 [02:43<01:49,  0.02it/s, v_num=nkwx, train/loss=232.0]Epoch 0:  80%|████████  | 4/5 [03:45<00:56,  0.02it/s, v_num=nkwx, train/loss=232.0]Epoch 0:  80%|████████  | 4/5 [03:45<00:56,  0.02it/s, v_num=nkwx, train/loss=52.10]Epoch 0: 100%|██████████| 5/5 [04:02<00:00,  0.02it/s, v_num=nkwx, train/loss=52.10]Epoch 0: 100%|██████████| 5/5 [04:02<00:00,  0.02it/s, v_num=nkwx, train/loss=45.60]
+Validation: |          | 0/? [00:00<?, ?it/s][A
+Validation:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/36543 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 1/36543 [01:11<728:48:37,  0.01it/s][A

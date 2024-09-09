@@ -1,0 +1,57 @@
+[rank: 0] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+wandb: Currently logged in as: abhinav2212 (gohillab). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.17.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /scratch/10110/abhinav22/output_dir/wandb/run-20240908_005543-5i1gb4vl
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run full_train
+wandb: ⭐️ View project at https://wandb.ai/gohillab/openfold_training
+wandb: 🚀 View run at https://wandb.ai/gohillab/openfold_training/runs/5i1gb4vl
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+wandb: WARNING Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-PCIE-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+[rank: 0] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+Enabling DeepSpeed BF16. Model parameters and inputs will be cast to `bfloat16`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 716, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 465, in main
+    trainer.fit(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 543, in fit
+    call._call_and_handle_interrupt(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 43, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+    return function(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 579, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 962, in _run
+    self.strategy.setup(self)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/deepspeed.py", line 350, in setup
+    self.init_deepspeed()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/deepspeed.py", line 451, in init_deepspeed
+    self._initialize_deepspeed_train(self.model)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/deepspeed.py", line 487, in _initialize_deepspeed_train
+    model, deepspeed_optimizer = self._setup_model_and_optimizer(model, optimizer, scheduler)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/deepspeed.py", line 423, in _setup_model_and_optimizer
+    deepspeed_engine, deepspeed_optimizer, _, _ = deepspeed.initialize(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/__init__.py", line 157, in initialize
+    config_class = DeepSpeedConfig(config, mpu)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/config.py", line 782, in __init__
+    self._configure_train_batch_size()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/config.py", line 961, in _configure_train_batch_size
+    self._batch_assertion()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/config.py", line 909, in _batch_assertion
+    assert train_batch == micro_batch * grad_acc * self.world_size, (
+AssertionError: Check batch related parameters. train_batch_size is not equal to micro_batch_per_gpu * gradient_acc_step * world_size 6 != 1 * 1 * 1
+wandb: - 0.057 MB of 0.057 MB uploadedwandb: \ 0.075 MB of 0.075 MB uploadedwandb: 🚀 View run full_train at: https://wandb.ai/gohillab/openfold_training/runs/5i1gb4vl
+wandb: ⭐️ View project at: https://wandb.ai/gohillab/openfold_training
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 4 other file(s)
+wandb: Find logs at: /scratch/10110/abhinav22/output_dir/wandb/run-20240908_005543-5i1gb4vl/logs
