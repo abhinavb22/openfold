@@ -10,3 +10,7 @@ data
 openfold/resources/
 tests/test_data/
 cutlass/
+openfold_run_pred.sh
+openfold_training_debug.sh
+slurm_train_openfold_debug.sh
+run_openfold.sh

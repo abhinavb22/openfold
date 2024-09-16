@@ -832,7 +832,7 @@ multimer_config_update = mlc.ConfigDict({
             "max_msa_clusters": 508,
             "max_extra_msa": 2048,
             "block_delete_msa" : False,
-            "crop_size": 384, #640 
+            "crop_size": 128, #640 
             "spatial_crop_prob": 0.5,
             "interface_threshold": 10.,
             "clamp_prob": 1.,

@@ -290,10 +290,12 @@ def main(args):
 
     is_low_precision = args.precision in [
         "bf16-mixed", "16", "bf16", "16-true", "16-mixed", "bf16-mixed"]
+    if not is_low_precision:
+        torch.set_float32_matmul_precision('high')
     #os.environ['WORLD_SIZE'] = '6'  # Total number of GPUs    
-    os.environ['WORLD_SIZE'] = '3'  # Total number of processes
-    os.environ['RANK'] = '0'  
-    dist.init_process_group(backend='nccl')
+    #os.environ['WORLD_SIZE'] = '3'  # Total number of processes
+    #os.environ['RANK'] = '0'  
+    #dist.init_process_group(backend='nccl')
     config = model_config(
         args.config_preset, 
         train=True, 
@@ -447,8 +449,7 @@ def main(args):
         'default_root_dir': args.output_dir,
         'strategy': strategy,
         'callbacks': callbacks,
-        'logger': loggers,
-        'devices':3        
+        'logger': loggers
     })
     trainer = pl.Trainer(**trainer_args)
 
@@ -458,6 +459,9 @@ def main(args):
     else:
         ckpt_path = args.resume_from_ckpt    
 
+
+#    dist.init_process_group(backend='nccl', init_method='env://')
+
     print([torch.cuda.device_count(),args.gpus], flush=True)
     print(f"Trainer device info:", flush=True)    
     print(f"  Number of devices: {trainer.num_devices}", flush=True) 
@@ -466,6 +470,7 @@ def main(args):
     print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE')}", flush=True)
     print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK')}", flush=True)
     #print(f"Number of GPUs in DeepSpeed config: {trainer.strategy.config}", flush=True)  
+
     trainer.fit(
         model_module,
         datamodule=data_module,
@@ -674,6 +679,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--mpi_plugin", action="store_true", default=False,
                         help="Whether to use MPI for parallele processing")
+    parser.add_argument("--local_rank", type=int, default=-1, help="Local rank for distributed training")
 
     trainer_group = parser.add_argument_group(
         'Arguments to pass to PyTorch Lightning Trainer')
