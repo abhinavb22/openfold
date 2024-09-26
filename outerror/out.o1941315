@@ -1,7 +1,0 @@
-[2024-09-08 10:53:30,664] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[3, 3]
-Trainer device info:
-  Number of devices: 3
-  Number of nodes: 1
-WORLD_SIZE: 6
-LOCAL_RANK: None

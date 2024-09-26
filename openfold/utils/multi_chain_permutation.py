@@ -264,6 +264,7 @@ def merge_labels(per_asym_residue_index: Dict[int,List[int]],
     https://github.com/dptech-corp/Uni-Fold/blob/b1c89a2cebd4e4ee4c47b4e443f92beeb9138fbb/unifold/losses/chain_align.py#L176C1-L176C1
     """
     outs = {}
+    #print(f"per_asym_residue_index in merge labels: {per_asym_residue_index}", flush=True)
     for k, v in labels[0].items():
         cur_out = {}
         for i, j in align:
@@ -283,6 +284,7 @@ def merge_labels(per_asym_residue_index: Dict[int,List[int]],
                 nres_pad = original_nres - new_v.shape[dimension_to_merge]
                 new_v = pad_features(new_v, nres_pad, pad_dim=dimension_to_merge)
             outs[k] = new_v
+    #print(f"outs:{outs['asym_id']}", flush=True)
     return outs
 
 
@@ -452,18 +454,19 @@ def compute_permutation_alignment(out: Dict[str,torch.Tensor],
     unique_asym_ids = set(torch.unique(features['asym_id']).tolist())
     unique_asym_ids.discard(0)  # Remove padding asym_id
     is_monomer = len(unique_asym_ids) == 1
-
+    #print(f"unique_asym_ids:{unique_asym_ids}", flush=True)
     per_asym_residue_index = get_per_asym_residue_index(features)
-
+    '''
     if is_monomer:
         best_align = list(enumerate(range(len(per_asym_residue_index))))
         return best_align, per_asym_residue_index
-
+    '''
     best_rmsd = float('inf')
     best_align = None
     # First select anchors from predicted structures and ground truths
     anchor_gt_asym, anchor_pred_asym_ids = get_least_asym_entity_or_longest_length(ground_truth,
                                                                                    features['asym_id'])
+    #print("anchor_gt_asym, anchor_pred_asym_ids", anchor_gt_asym, anchor_pred_asym_ids, flush=True)
     entity_2_asym_list = get_entity_2_asym_list(ground_truth)
     labels = split_ground_truth_labels(ground_truth)
     assert isinstance(labels, list)
@@ -508,7 +511,7 @@ def compute_permutation_alignment(out: Dict[str,torch.Tensor],
         if rmsd < best_rmsd:
             best_rmsd = rmsd
             best_align = align
-
+    #print("best_align, best_rmsd:",best_align, best_rmsd, flush=True)
     return best_align, per_asym_residue_index
 
 
@@ -528,12 +531,14 @@ def multi_chain_permutation_align(out: Dict[str, torch.Tensor],
     """
 
     labels = split_ground_truth_labels(ground_truth)
-
+    #print(labels, flush=True)
     # Then permute ground truth chains before calculating the loss
     align, per_asym_residue_index = compute_permutation_alignment(out=out,
                                                                   features=features,
                                                                   ground_truth=ground_truth)
-
+    
+    #print(f"per_asym_residue_index: {per_asym_residue_index}", f"align:{align}", flush=True)
+    #print(features["asym_id"], ground_truth["asym_id"],features["batch_idx"],  flush=True)
     # reorder ground truth labels according to permutation results
     labels = merge_labels(per_asym_residue_index, labels, align,
                           original_nres=features['aatype'].shape[-1])

@@ -1,0 +1,399 @@
+[2024-09-22 22:15:39,947] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,957] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,959] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,960] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,968] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,969] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,984] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:39,995] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:40,006] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:41,325] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:41,325] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-09-22 22:15:41,336] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 1
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 2
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 0
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 2
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 0
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 1
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 2
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 1
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 0
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 2
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 1
+[3, 3]
+Trainer device info:
+  Number of devices: 3
+  Number of nodes: 4
+WORLD_SIZE: 12
+LOCAL_RANK: 0
+c316-002:1705652:1705652 [0] NCCL INFO Bootstrap : Using ib0:192.168.43.82<0>
+c316-002:1705652:1705652 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-002:1705652:1705652 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-002:1705652:1705652 [0] NCCL INFO cudaDriverVersion 12020
+c316-002:1705654:1705654 [2] NCCL INFO cudaDriverVersion 12020
+NCCL version 2.18.6+cuda12.1
+c316-010:1798744:1798744 [2] NCCL INFO cudaDriverVersion 12020
+c316-003:2108602:2108602 [2] NCCL INFO cudaDriverVersion 12020
+c316-010:1798742:1798742 [0] NCCL INFO cudaDriverVersion 12020
+c316-010:1798743:1798743 [1] NCCL INFO cudaDriverVersion 12020
+c316-003:2108601:2108601 [1] NCCL INFO cudaDriverVersion 12020
+c316-003:2108600:2108600 [0] NCCL INFO cudaDriverVersion 12020
+c316-011:3750630:3750630 [0] NCCL INFO cudaDriverVersion 12020
+c316-011:3750632:3750632 [2] NCCL INFO cudaDriverVersion 12020
+c316-011:3750631:3750631 [1] NCCL INFO cudaDriverVersion 12020
+c316-002:1705653:1705653 [1] NCCL INFO cudaDriverVersion 12020
+c316-002:1705654:1705654 [2] NCCL INFO Bootstrap : Using ib0:192.168.43.82<0>
+c316-002:1705654:1705654 [2] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-002:1705654:1705654 [2] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-002:1705653:1705653 [1] NCCL INFO Bootstrap : Using ib0:192.168.43.82<0>
+c316-002:1705653:1705653 [1] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-002:1705653:1705653 [1] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-010:1798742:1798742 [0] NCCL INFO Bootstrap : Using ib0:192.168.43.90<0>
+c316-010:1798743:1798743 [1] NCCL INFO Bootstrap : Using ib0:192.168.43.90<0>
+c316-010:1798744:1798744 [2] NCCL INFO Bootstrap : Using ib0:192.168.43.90<0>
+c316-010:1798743:1798743 [1] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-010:1798743:1798743 [1] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-010:1798744:1798744 [2] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-010:1798742:1798742 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-010:1798744:1798744 [2] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-010:1798742:1798742 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-003:2108601:2108601 [1] NCCL INFO Bootstrap : Using ib0:192.168.43.83<0>
+c316-003:2108602:2108602 [2] NCCL INFO Bootstrap : Using ib0:192.168.43.83<0>
+c316-003:2108600:2108600 [0] NCCL INFO Bootstrap : Using ib0:192.168.43.83<0>
+c316-003:2108601:2108601 [1] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-003:2108601:2108601 [1] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-003:2108600:2108600 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-003:2108602:2108602 [2] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-003:2108600:2108600 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-003:2108602:2108602 [2] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-011:3750632:3750632 [2] NCCL INFO Bootstrap : Using ib0:192.168.43.91<0>
+c316-011:3750630:3750630 [0] NCCL INFO Bootstrap : Using ib0:192.168.43.91<0>
+c316-011:3750631:3750631 [1] NCCL INFO Bootstrap : Using ib0:192.168.43.91<0>
+c316-011:3750631:3750631 [1] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-011:3750632:3750632 [2] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-011:3750630:3750630 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c316-011:3750631:3750631 [1] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-011:3750632:3750632 [2] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-011:3750630:3750630 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c316-003:2108602:2108643 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-003:2108602:2108643 [2] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.83<0>
+c316-003:2108602:2108643 [2] NCCL INFO Using network Socket
+c316-003:2108601:2108645 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-003:2108600:2108644 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-003:2108601:2108645 [1] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.83<0>
+c316-003:2108601:2108645 [1] NCCL INFO Using network Socket
+c316-003:2108600:2108644 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.83<0>
+c316-003:2108600:2108644 [0] NCCL INFO Using network Socket
+c316-010:1798744:1798784 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-010:1798744:1798784 [2] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.90<0>
+c316-010:1798744:1798784 [2] NCCL INFO Using network Socket
+c316-002:1705654:1705698 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-002:1705654:1705698 [2] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.82<0>
+c316-002:1705654:1705698 [2] NCCL INFO Using network Socket
+c316-010:1798743:1798786 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-010:1798743:1798786 [1] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.90<0>
+c316-010:1798743:1798786 [1] NCCL INFO Using network Socket
+c316-002:1705652:1705697 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-002:1705652:1705697 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.82<0>
+c316-002:1705652:1705697 [0] NCCL INFO Using network Socket
+c316-010:1798742:1798785 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-010:1798742:1798785 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.90<0>
+c316-010:1798742:1798785 [0] NCCL INFO Using network Socket
+c316-002:1705653:1705699 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-011:3750632:3750673 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-002:1705653:1705699 [1] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.82<0>
+c316-002:1705653:1705699 [1] NCCL INFO Using network Socket
+c316-011:3750632:3750673 [2] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.91<0>
+c316-011:3750632:3750673 [2] NCCL INFO Using network Socket
+c316-011:3750630:3750672 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-011:3750631:3750674 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+c316-011:3750630:3750672 [0] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.91<0>
+c316-011:3750630:3750672 [0] NCCL INFO Using network Socket
+c316-011:3750631:3750674 [1] NCCL INFO NET/Socket : Using [0]ib0:192.168.43.91<0>
+c316-011:3750631:3750674 [1] NCCL INFO Using network Socket
+c316-002:1705654:1705698 [2] NCCL INFO comm 0x55be30c54fc0 rank 2 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init START
+c316-002:1705652:1705697 [0] NCCL INFO comm 0x561c704ba2d0 rank 0 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init START
+c316-002:1705653:1705699 [1] NCCL INFO comm 0x55a7772e2100 rank 1 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init START
+c316-003:2108600:2108644 [0] NCCL INFO comm 0x559fbe8b7530 rank 3 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init START
+c316-011:3750632:3750673 [2] NCCL INFO comm 0x559d3274bc00 rank 11 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init START
+c316-011:3750631:3750674 [1] NCCL INFO comm 0x56160d881840 rank 10 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init START
+c316-011:3750630:3750672 [0] NCCL INFO comm 0x55ae5409a460 rank 9 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init START
+c316-010:1798742:1798785 [0] NCCL INFO comm 0x558f47df3550 rank 6 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init START
+c316-010:1798743:1798786 [1] NCCL INFO comm 0x5598bc861880 rank 7 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init START
+c316-010:1798744:1798784 [2] NCCL INFO comm 0x5569d697be50 rank 8 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init START
+c316-003:2108601:2108645 [1] NCCL INFO comm 0x55c29907bc90 rank 4 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init START
+c316-003:2108602:2108643 [2] NCCL INFO comm 0x558f186f4060 rank 5 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init START
+c316-002:1705654:1705698 [2] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-002:1705652:1705697 [0] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-002:1705654:1705698 [2] NCCL INFO Setting affinity for GPU 2 to ffffffff,ffffffff,00000000,00000000
+c316-002:1705654:1705698 [2] NCCL INFO NVLS multicast support is not available on dev 2
+c316-002:1705652:1705697 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c316-002:1705652:1705697 [0] NCCL INFO NVLS multicast support is not available on dev 0
+c316-002:1705653:1705699 [1] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-002:1705653:1705699 [1] NCCL INFO Setting affinity for GPU 1 to ffffffff,ffffffff,00000000,00000000
+c316-002:1705653:1705699 [1] NCCL INFO NVLS multicast support is not available on dev 1
+c316-003:2108601:2108645 [1] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-003:2108601:2108645 [1] NCCL INFO Setting affinity for GPU 1 to ffffffff,ffffffff,00000000,00000000
+c316-003:2108601:2108645 [1] NCCL INFO NVLS multicast support is not available on dev 1
+c316-011:3750630:3750672 [0] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-010:1798744:1798784 [2] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-011:3750630:3750672 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c316-003:2108602:2108643 [2] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-010:1798743:1798786 [1] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-010:1798744:1798784 [2] NCCL INFO Setting affinity for GPU 2 to ffffffff,ffffffff,00000000,00000000
+c316-010:1798744:1798784 [2] NCCL INFO NVLS multicast support is not available on dev 2
+c316-010:1798743:1798786 [1] NCCL INFO Setting affinity for GPU 1 to ffffffff,ffffffff,00000000,00000000
+c316-003:2108602:2108643 [2] NCCL INFO Setting affinity for GPU 2 to ffffffff,ffffffff,00000000,00000000
+c316-010:1798743:1798786 [1] NCCL INFO NVLS multicast support is not available on dev 1
+c316-003:2108602:2108643 [2] NCCL INFO NVLS multicast support is not available on dev 2
+c316-011:3750632:3750673 [2] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-011:3750632:3750673 [2] NCCL INFO Setting affinity for GPU 2 to ffffffff,ffffffff,00000000,00000000
+c316-011:3750632:3750673 [2] NCCL INFO NVLS multicast support is not available on dev 2
+c316-003:2108600:2108644 [0] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-010:1798742:1798785 [0] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-010:1798742:1798785 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c316-003:2108600:2108644 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+c316-011:3750631:3750674 [1] NCCL INFO NCCL_P2P_LEVEL set by environment to NVL
+c316-010:1798742:1798785 [0] NCCL INFO NVLS multicast support is not available on dev 0
+c316-003:2108600:2108644 [0] NCCL INFO NVLS multicast support is not available on dev 0
+c316-011:3750631:3750674 [1] NCCL INFO Setting affinity for GPU 1 to ffffffff,ffffffff,00000000,00000000
+c316-011:3750631:3750674 [1] NCCL INFO NVLS multicast support is not available on dev 1
+c316-011:3750630:3750672 [0] NCCL INFO NVLS multicast support is not available on dev 0
+c316-011:3750630:3750672 [0] NCCL INFO Trees [0] 10/-1/-1->9->6 [1] 10/3/-1->9->-1
+c316-011:3750630:3750672 [0] NCCL INFO P2P Chunksize set to 131072
+c316-002:1705652:1705697 [0] NCCL INFO Channel 00/02 :    0   1   2   3   4   5   6   7   8   9  10  11
+c316-002:1705652:1705697 [0] NCCL INFO Channel 01/02 :    0   1   2   3   4   5   6   7   8   9  10  11
+c316-002:1705652:1705697 [0] NCCL INFO Trees [0] 1/6/-1->0->-1 [1] 1/-1/-1->0->3
+c316-002:1705654:1705698 [2] NCCL INFO Trees [0] -1/-1/-1->2->1 [1] -1/-1/-1->2->1
+c316-002:1705652:1705697 [0] NCCL INFO P2P Chunksize set to 131072
+c316-002:1705654:1705698 [2] NCCL INFO P2P Chunksize set to 131072
+c316-002:1705653:1705699 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0
+c316-002:1705653:1705699 [1] NCCL INFO P2P Chunksize set to 131072
+c316-011:3750632:3750673 [2] NCCL INFO Trees [0] -1/-1/-1->11->10 [1] -1/-1/-1->11->10
+c316-011:3750632:3750673 [2] NCCL INFO P2P Chunksize set to 131072
+c316-003:2108601:2108645 [1] NCCL INFO Trees [0] 5/-1/-1->4->3 [1] 5/6/-1->4->3
+c316-003:2108602:2108643 [2] NCCL INFO Trees [0] -1/-1/-1->5->4 [1] -1/-1/-1->5->4
+c316-003:2108601:2108645 [1] NCCL INFO P2P Chunksize set to 131072
+c316-003:2108602:2108643 [2] NCCL INFO P2P Chunksize set to 131072
+c316-011:3750631:3750674 [1] NCCL INFO Trees [0] 11/-1/-1->10->9 [1] 11/-1/-1->10->9
+c316-011:3750631:3750674 [1] NCCL INFO P2P Chunksize set to 131072
+c316-010:1798744:1798784 [2] NCCL INFO Trees [0] -1/-1/-1->8->7 [1] -1/-1/-1->8->7
+c316-010:1798743:1798786 [1] NCCL INFO Trees [0] 8/3/-1->7->6 [1] 8/-1/-1->7->6
+c316-010:1798744:1798784 [2] NCCL INFO P2P Chunksize set to 131072
+c316-010:1798743:1798786 [1] NCCL INFO P2P Chunksize set to 131072
+c316-010:1798742:1798785 [0] NCCL INFO Trees [0] 7/9/-1->6->0 [1] 7/-1/-1->6->4
+c316-010:1798742:1798785 [0] NCCL INFO P2P Chunksize set to 131072
+c316-003:2108600:2108644 [0] NCCL INFO Trees [0] 4/-1/-1->3->7 [1] 4/0/-1->3->9
+c316-003:2108600:2108644 [0] NCCL INFO P2P Chunksize set to 131072
+c316-002:1705652:1705697 [0] NCCL INFO Channel 00/0 : 11[2] -> 0[0] [receive] via NET/Socket/0
+c316-002:1705652:1705697 [0] NCCL INFO Channel 01/0 : 11[2] -> 0[0] [receive] via NET/Socket/0
+c316-002:1705652:1705697 [0] NCCL INFO Channel 00 : 0[0] -> 1[1] via SHM/direct/direct
+c316-002:1705652:1705697 [0] NCCL INFO Channel 01 : 0[0] -> 1[1] via SHM/direct/direct
+c316-011:3750630:3750672 [0] NCCL INFO Channel 00/0 : 8[2] -> 9[0] [receive] via NET/Socket/0
+c316-011:3750630:3750672 [0] NCCL INFO Channel 01/0 : 8[2] -> 9[0] [receive] via NET/Socket/0
+c316-003:2108600:2108644 [0] NCCL INFO Channel 00/0 : 2[2] -> 3[0] [receive] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 00/0 : 5[2] -> 6[0] [receive] via NET/Socket/0
+c316-003:2108600:2108644 [0] NCCL INFO Channel 01/0 : 2[2] -> 3[0] [receive] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 01/0 : 5[2] -> 6[0] [receive] via NET/Socket/0
+c316-011:3750630:3750672 [0] NCCL INFO Channel 00 : 9[0] -> 10[1] via SHM/direct/direct
+c316-011:3750630:3750672 [0] NCCL INFO Channel 01 : 9[0] -> 10[1] via SHM/direct/direct
+c316-003:2108600:2108644 [0] NCCL INFO Channel 00 : 3[0] -> 4[1] via SHM/direct/direct
+c316-010:1798742:1798785 [0] NCCL INFO Channel 00 : 6[0] -> 7[1] via SHM/direct/direct
+c316-003:2108600:2108644 [0] NCCL INFO Channel 01 : 3[0] -> 4[1] via SHM/direct/direct
+c316-010:1798742:1798785 [0] NCCL INFO Channel 01 : 6[0] -> 7[1] via SHM/direct/direct
+c316-002:1705653:1705699 [1] NCCL INFO Channel 00 : 1[1] -> 2[2] via SHM/direct/direct
+c316-002:1705653:1705699 [1] NCCL INFO Channel 01 : 1[1] -> 2[2] via SHM/direct/direct
+c316-002:1705654:1705698 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[0] [send] via NET/Socket/0
+c316-011:3750631:3750674 [1] NCCL INFO Channel 00 : 10[1] -> 11[2] via SHM/direct/direct
+c316-011:3750631:3750674 [1] NCCL INFO Channel 01 : 10[1] -> 11[2] via SHM/direct/direct
+c316-002:1705654:1705698 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[0] [send] via NET/Socket/0
+c316-003:2108601:2108645 [1] NCCL INFO Channel 00 : 4[1] -> 5[2] via SHM/direct/direct
+c316-003:2108601:2108645 [1] NCCL INFO Channel 01 : 4[1] -> 5[2] via SHM/direct/direct
+c316-010:1798743:1798786 [1] NCCL INFO Channel 00 : 7[1] -> 8[2] via SHM/direct/direct
+c316-010:1798743:1798786 [1] NCCL INFO Channel 01 : 7[1] -> 8[2] via SHM/direct/direct
+c316-011:3750632:3750673 [2] NCCL INFO Channel 00/0 : 11[2] -> 0[0] [send] via NET/Socket/0
+c316-011:3750632:3750673 [2] NCCL INFO Channel 01/0 : 11[2] -> 0[0] [send] via NET/Socket/0
+c316-003:2108602:2108643 [2] NCCL INFO Channel 00/0 : 5[2] -> 6[0] [send] via NET/Socket/0
+c316-010:1798744:1798784 [2] NCCL INFO Channel 00/0 : 8[2] -> 9[0] [send] via NET/Socket/0
+c316-003:2108602:2108643 [2] NCCL INFO Channel 01/0 : 5[2] -> 6[0] [send] via NET/Socket/0
+c316-010:1798744:1798784 [2] NCCL INFO Channel 01/0 : 8[2] -> 9[0] [send] via NET/Socket/0
+c316-002:1705653:1705699 [1] NCCL INFO Connected all rings
+c316-011:3750631:3750674 [1] NCCL INFO Connected all rings
+c316-003:2108601:2108645 [1] NCCL INFO Connected all rings
+c316-010:1798743:1798786 [1] NCCL INFO Connected all rings
+c316-002:1705654:1705698 [2] NCCL INFO Connected all rings
+c316-002:1705654:1705698 [2] NCCL INFO Channel 00 : 2[2] -> 1[1] via SHM/direct/direct
+c316-002:1705654:1705698 [2] NCCL INFO Channel 01 : 2[2] -> 1[1] via SHM/direct/direct
+c316-003:2108601:2108645 [1] NCCL INFO Channel 01/0 : 4[1] -> 6[0] [send] via NET/Socket/0
+c316-011:3750632:3750673 [2] NCCL INFO Connected all rings
+c316-010:1798743:1798786 [1] NCCL INFO Channel 00/0 : 3[0] -> 7[1] [receive] via NET/Socket/0
+c316-011:3750632:3750673 [2] NCCL INFO Channel 00 : 11[2] -> 10[1] via SHM/direct/direct
+c316-011:3750632:3750673 [2] NCCL INFO Channel 01 : 11[2] -> 10[1] via SHM/direct/direct
+c316-003:2108600:2108644 [0] NCCL INFO Connected all rings
+c316-003:2108600:2108644 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[0] [receive] via NET/Socket/0
+c316-002:1705653:1705699 [1] NCCL INFO Channel 00 : 1[1] -> 0[0] via SHM/direct/direct
+c316-002:1705653:1705699 [1] NCCL INFO Channel 01 : 1[1] -> 0[0] via SHM/direct/direct
+c316-003:2108602:2108643 [2] NCCL INFO Connected all rings
+c316-010:1798744:1798784 [2] NCCL INFO Connected all rings
+c316-010:1798744:1798784 [2] NCCL INFO Channel 00 : 8[2] -> 7[1] via SHM/direct/direct
+c316-003:2108602:2108643 [2] NCCL INFO Channel 00 : 5[2] -> 4[1] via SHM/direct/direct
+c316-010:1798744:1798784 [2] NCCL INFO Channel 01 : 8[2] -> 7[1] via SHM/direct/direct
+c316-003:2108602:2108643 [2] NCCL INFO Channel 01 : 5[2] -> 4[1] via SHM/direct/direct
+c316-002:1705652:1705697 [0] NCCL INFO Connected all rings
+c316-011:3750631:3750674 [1] NCCL INFO Channel 00 : 10[1] -> 9[0] via SHM/direct/direct
+c316-002:1705652:1705697 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[0] [send] via NET/Socket/0
+c316-011:3750631:3750674 [1] NCCL INFO Channel 01 : 10[1] -> 9[0] via SHM/direct/direct
+c316-002:1705652:1705697 [0] NCCL INFO Channel 00/0 : 6[0] -> 0[0] [receive] via NET/Socket/0
+c316-003:2108600:2108644 [0] NCCL INFO Channel 00/0 : 3[0] -> 7[1] [send] via NET/Socket/0
+c316-002:1705652:1705697 [0] NCCL INFO Channel 00/0 : 0[0] -> 6[0] [send] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Connected all rings
+c316-002:1705654:1705698 [2] NCCL INFO Connected all trees
+c316-002:1705654:1705698 [2] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-010:1798742:1798785 [0] NCCL INFO Channel 01/0 : 4[1] -> 6[0] [receive] via NET/Socket/0
+c316-002:1705654:1705698 [2] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-003:2108600:2108644 [0] NCCL INFO Channel 01/0 : 9[0] -> 3[0] [receive] via NET/Socket/0
+c316-011:3750630:3750672 [0] NCCL INFO Connected all rings
+c316-003:2108600:2108644 [0] NCCL INFO Channel 01/0 : 3[0] -> 9[0] [send] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 00/0 : 6[0] -> 9[0] [send] via NET/Socket/0
+c316-011:3750630:3750672 [0] NCCL INFO Channel 00/0 : 6[0] -> 9[0] [receive] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 00/0 : 0[0] -> 6[0] [receive] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 00/0 : 6[0] -> 0[0] [send] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 00/0 : 9[0] -> 6[0] [receive] via NET/Socket/0
+c316-002:1705652:1705697 [0] NCCL INFO Channel 01/0 : 3[0] -> 0[0] [receive] via NET/Socket/0
+c316-011:3750630:3750672 [0] NCCL INFO Channel 01/0 : 3[0] -> 9[0] [receive] via NET/Socket/0
+c316-011:3750630:3750672 [0] NCCL INFO Channel 01/0 : 9[0] -> 3[0] [send] via NET/Socket/0
+c316-011:3750632:3750673 [2] NCCL INFO Connected all trees
+c316-011:3750632:3750673 [2] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-011:3750632:3750673 [2] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-011:3750630:3750672 [0] NCCL INFO Channel 00/0 : 9[0] -> 6[0] [send] via NET/Socket/0
+c316-010:1798742:1798785 [0] NCCL INFO Channel 01/0 : 6[0] -> 4[1] [send] via NET/Socket/0
+c316-003:2108600:2108644 [0] NCCL INFO Channel 00/0 : 7[1] -> 3[0] [receive] via NET/Socket/0
+c316-003:2108601:2108645 [1] NCCL INFO Channel 01/0 : 6[0] -> 4[1] [receive] via NET/Socket/0
+c316-010:1798743:1798786 [1] NCCL INFO Channel 00/0 : 7[1] -> 3[0] [send] via NET/Socket/0
+c316-003:2108600:2108644 [0] NCCL INFO Channel 01/0 : 3[0] -> 0[0] [send] via NET/Socket/0
+c316-011:3750631:3750674 [1] NCCL INFO Connected all trees
+c316-011:3750631:3750674 [1] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-011:3750631:3750674 [1] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-003:2108601:2108645 [1] NCCL INFO Channel 00 : 4[1] -> 3[0] via SHM/direct/direct
+c316-010:1798743:1798786 [1] NCCL INFO Channel 00 : 7[1] -> 6[0] via SHM/direct/direct
+c316-003:2108601:2108645 [1] NCCL INFO Channel 01 : 4[1] -> 3[0] via SHM/direct/direct
+c316-010:1798743:1798786 [1] NCCL INFO Channel 01 : 7[1] -> 6[0] via SHM/direct/direct
+c316-010:1798744:1798784 [2] NCCL INFO Connected all trees
+c316-010:1798744:1798784 [2] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-010:1798744:1798784 [2] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-003:2108602:2108643 [2] NCCL INFO Connected all trees
+c316-003:2108602:2108643 [2] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-003:2108602:2108643 [2] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-002:1705653:1705699 [1] NCCL INFO Connected all trees
+c316-002:1705653:1705699 [1] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-002:1705653:1705699 [1] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-010:1798743:1798786 [1] NCCL INFO Connected all trees
+c316-011:3750630:3750672 [0] NCCL INFO Connected all trees
+c316-011:3750630:3750672 [0] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-011:3750630:3750672 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-010:1798743:1798786 [1] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-010:1798743:1798786 [1] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-010:1798742:1798785 [0] NCCL INFO Connected all trees
+c316-002:1705652:1705697 [0] NCCL INFO Connected all trees
+c316-010:1798742:1798785 [0] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-010:1798742:1798785 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-003:2108601:2108645 [1] NCCL INFO Connected all trees
+c316-002:1705652:1705697 [0] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-002:1705652:1705697 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-003:2108601:2108645 [1] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-003:2108601:2108645 [1] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-003:2108600:2108644 [0] NCCL INFO Connected all trees
+c316-003:2108600:2108644 [0] NCCL INFO threadThresholds 8/8/64 | 96/8/64 | 512 | 512
+c316-003:2108600:2108644 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c316-011:3750631:3750674 [1] NCCL INFO comm 0x56160d881840 rank 10 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-011:3750630:3750672 [0] NCCL INFO comm 0x55ae5409a460 rank 9 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-011:3750632:3750673 [2] NCCL INFO comm 0x559d3274bc00 rank 11 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-010:1798743:1798786 [1] NCCL INFO comm 0x5598bc861880 rank 7 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-010:1798744:1798784 [2] NCCL INFO comm 0x5569d697be50 rank 8 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-010:1798742:1798785 [0] NCCL INFO comm 0x558f47df3550 rank 6 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-003:2108601:2108645 [1] NCCL INFO comm 0x55c29907bc90 rank 4 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-003:2108602:2108643 [2] NCCL INFO comm 0x558f186f4060 rank 5 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-002:1705653:1705699 [1] NCCL INFO comm 0x55a7772e2100 rank 1 nranks 12 cudaDev 1 nvmlDev 1 busId 81000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-002:1705654:1705698 [2] NCCL INFO comm 0x55be30c54fc0 rank 2 nranks 12 cudaDev 2 nvmlDev 2 busId e2000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-002:1705652:1705697 [0] NCCL INFO comm 0x561c704ba2d0 rank 0 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init COMPLETE
+c316-003:2108600:2108644 [0] NCCL INFO comm 0x559fbe8b7530 rank 3 nranks 12 cudaDev 0 nvmlDev 0 busId 21000 commId 0xfba0bec3a8913796 - Init COMPLETE
+Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/84 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/84 [00:00<?, ?it/s] Epoch 0:   1%|          | 1/84 [02:10<3:00:03,  0.01it/s]Epoch 0:   1%|          | 1/84 [02:10<3:00:03,  0.01it/s, v_num=q7ax, train/loss=48.90]Epoch 0:   2%|▏         | 2/84 [04:05<2:47:29,  0.01it/s, v_num=q7ax, train/loss=48.90]Epoch 0:   2%|▏         | 2/84 [04:05<2:47:29,  0.01it/s, v_num=q7ax, train/loss=39.50]Epoch 0:   4%|▎         | 3/84 [06:09<2:46:25,  0.01it/s, v_num=q7ax, train/loss=39.50]Epoch 0:   4%|▎         | 3/84 [06:09<2:46:25,  0.01it/s, v_num=q7ax, train/loss=42.80]Epoch 0:   5%|▍         | 4/84 [08:16<2:45:22,  0.01it/s, v_num=q7ax, train/loss=42.80]Epoch 0:   5%|▍         | 4/84 [08:16<2:45:22,  0.01it/s, v_num=q7ax, train/loss=52.90]Epoch 0:   6%|▌         | 5/84 [10:03<2:38:58,  0.01it/s, v_num=q7ax, train/loss=52.90]Epoch 0:   6%|▌         | 5/84 [10:03<2:38:58,  0.01it/s, v_num=q7ax, train/loss=62.80]Epoch 0:   7%|▋         | 6/84 [11:51<2:34:12,  0.01it/s, v_num=q7ax, train/loss=62.80]Epoch 0:   7%|▋         | 6/84 [11:51<2:34:12,  0.01it/s, v_num=q7ax, train/loss=41.30]Epoch 0:   8%|▊         | 7/84 [13:40<2:30:27,  0.01it/s, v_num=q7ax, train/loss=41.30]Epoch 0:   8%|▊         | 7/84 [13:40<2:30:27,  0.01it/s, v_num=q7ax, train/loss=31.60]Epoch 0:  10%|▉         | 8/84 [15:37<2:28:30,  0.01it/s, v_num=q7ax, train/loss=31.60]Epoch 0:  10%|▉         | 8/84 [15:37<2:28:30,  0.01it/s, v_num=q7ax, train/loss=56.20]Epoch 0:  11%|█         | 9/84 [17:14<2:23:41,  0.01it/s, v_num=q7ax, train/loss=56.20]Epoch 0:  11%|█         | 9/84 [17:14<2:23:41,  0.01it/s, v_num=q7ax, train/loss=63.20]Epoch 0:  12%|█▏        | 10/84 [18:54<2:19:57,  0.01it/s, v_num=q7ax, train/loss=63.20]Epoch 0:  12%|█▏        | 10/84 [18:54<2:19:57,  0.01it/s, v_num=q7ax, train/loss=47.70]Epoch 0:  13%|█▎        | 11/84 [20:53<2:18:41,  0.01it/s, v_num=q7ax, train/loss=47.70]Epoch 0:  13%|█▎        | 11/84 [20:c316-003:2108602:2108646 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+c316-003:2108600:2108648 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+53<2:18:41,  0.01it/s, v_num=q7ax, train/loss=55.90]Epoch 0:  14%|█▍        | 12/84 [22:59<2:17:56,  0.01it/s, v_num=q7ax, train/loss=55.90]Epoch 0:  14%|█▍        | 12/84 [22:59<2:17:56,  0.01it/s, v_num=q7ax, train/loss=54.30]Epoch 0:  15%|█▌        | 13/84 [24:35<2:14:20,  0.01it/s, v_num=q7ax, train/loss=54.30]Epoch 0:  15%|█▌        | 13/84 [24:36<2:14:23,  0.01it/s, v_num=q7ax, train/loss=56.60]Epoch 0:  17%|█▋        | 14/84 [26:45<2:13:46,  0.01it/s, v_num=q7ax, train/loss=56.60]Epoch 0:  17%|█▋        | 14/84 [26:45<2:13:46,  0.01it/s, v_num=q7ax, train/loss=38.10]c316-002:1705652:1705700 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+c316-003:2108601:2108647 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+c316-010:1798742:1798789 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+c316-002:1705653:1705702 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+c316-002:1705654:1705701 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+c316-010:1798743:1798788 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+c316-010:1798744:1798787 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+c316-003:2108602:2108602 [2] NCCL INFO comm 0x558f186f4060 rank 5 nranks 12 cudaDev 2 busId e2000 - Abort COMPLETE
+c316-003:2108600:2108600 [0] NCCL INFO comm 0x559fbe8b7530 rank 3 nranks 12 cudaDev 0 busId 21000 - Abort COMPLETE
+c316-002:1705652:1705652 [0] NCCL INFO comm 0x561c704ba2d0 rank 0 nranks 12 cudaDev 0 busId 21000 - Abort COMPLETE
+c316-003:2108601:2108601 [1] NCCL INFO comm 0x55c29907bc90 rank 4 nranks 12 cudaDev 1 busId 81000 - Abort COMPLETE
+c316-011:3750632:3750676 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+c316-011:3750630:3750675 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+c316-010:1798742:1798742 [0] NCCL INFO comm 0x558f47df3550 rank 6 nranks 12 cudaDev 0 busId 21000 - Abort COMPLETE
+c316-002:1705653:1705653 [1] NCCL INFO comm 0x55a7772e2100 rank 1 nranks 12 cudaDev 1 busId 81000 - Abort COMPLETE
+c316-002:1705654:1705654 [2] NCCL INFO comm 0x55be30c54fc0 rank 2 nranks 12 cudaDev 2 busId e2000 - Abort COMPLETE
+c316-010:1798743:1798743 [1] NCCL INFO comm 0x5598bc861880 rank 7 nranks 12 cudaDev 1 busId 81000 - Abort COMPLETE
+c316-010:1798744:1798744 [2] NCCL INFO comm 0x5569d697be50 rank 8 nranks 12 cudaDev 2 busId e2000 - Abort COMPLETE
+c316-011:3750631:3750677 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+c316-011:3750632:3750632 [2] NCCL INFO comm 0x559d3274bc00 rank 11 nranks 12 cudaDev 2 busId e2000 - Abort COMPLETE
+c316-011:3750630:3750630 [0] NCCL INFO comm 0x55ae5409a460 rank 9 nranks 12 cudaDev 0 busId 21000 - Abort COMPLETE
+c316-011:3750631:3750631 [1] NCCL INFO comm 0x56160d881840 rank 10 nranks 12 cudaDev 1 busId 81000 - Abort COMPLETE

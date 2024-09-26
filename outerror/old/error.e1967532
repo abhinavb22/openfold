@@ -1,0 +1,820 @@
+[2024-09-22 23:59:38,596] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[2024-09-22 23:59:38,597] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[2024-09-22 23:59:38,598] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[2024-09-22 23:59:39,250] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[2024-09-22 23:59:39,255] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[2024-09-22 23:59:39,346] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[rank: 3] Seed set to 77843
+[rank: 11] Seed set to 77843
+[rank: 9] Seed set to 77843
+[rank: 7] Seed set to 77843
+[rank: 10] Seed set to 77843
+[rank: 6] Seed set to 77843
+[rank: 8] Seed set to 77843
+[rank: 4] Seed set to 77843
+[rank: 5] Seed set to 77843
+[rank: 1] Seed set to 77843
+[rank: 0] Seed set to 77843
+[rank: 2] Seed set to 77843
+[rank: 16] Seed set to 77843
+[rank: 15] Seed set to 77843
+[rank: 17] Seed set to 77843
+[rank: 12] Seed set to 77843
+[rank: 14] Seed set to 77843
+[rank: 13] Seed set to 77843
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+WARNING:root:load from versionmodel_1_multimer_v3
+[rank: 3] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 3, MEMBER: 4/18
+[rank: 4] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 4, MEMBER: 5/18
+[rank: 9] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 9, MEMBER: 10/18
+[rank: 5] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 5, MEMBER: 6/18
+[rank: 6] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 6, MEMBER: 7/18
+[rank: 10] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 10, MEMBER: 11/18
+[rank: 11] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 11, MEMBER: 12/18
+[rank: 7] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 7, MEMBER: 8/18
+[rank: 8] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 8, MEMBER: 9/18
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+[rank: 15] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 15, MEMBER: 16/18
+You are using a CUDA device ('NVIDIA A100-PCIE-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+[rank: 0] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 0, MEMBER: 1/18
+[rank: 17] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 17, MEMBER: 18/18
+[rank: 16] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 16, MEMBER: 17/18
+[rank: 2] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 2, MEMBER: 3/18
+[rank: 12] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 12, MEMBER: 13/18
+[rank: 1] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 1, MEMBER: 2/18
+[rank: 13] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 13, MEMBER: 14/18
+[rank: 14] Seed set to 77843
+initializing deepspeed distributed: GLOBAL_RANK: 14, MEMBER: 15/18
+wandb: Currently logged in as: abhinav2212 (gohillab). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.18.1 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /scratch/10110/abhinav22/output_dir/wandb/run-20240923_000007-yac5ugyo
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run deepspeed_training_18GPUs
+wandb: ⭐️ View project at https://wandb.ai/gohillab/openfold_training
+wandb: 🚀 View run at https://wandb.ai/gohillab/openfold_training/runs/yac5ugyo
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+Enabling DeepSpeed BF16. Model parameters and inputs will be cast to `bfloat16`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
+
+  | Name  | Type          | Params | Mode 
+------------------------------------------------
+0 | model | AlphaFold     | 93.2 M | train
+1 | loss  | AlphaFoldLoss | 0      | train
+------------------------------------------------
+93.2 M    Trainable params
+0         Non-trainable params
+93.2 M    Total params
+372.895   Total estimated model params size (MB)
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1268: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400410390/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  total_norm_cuda = get_accelerator().FloatTensor([float(total_norm)])
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 765, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 505, in main
+    trainer.fit(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 543, in fit
+    call._call_and_handle_interrupt(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 43, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+    return function(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 579, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 986, in _run
+    results = self._run_stage()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1030, in _run_stage
+    self.fit_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+    self.advance()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 141, in run
+    self.on_advance_end(data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 295, in on_advance_end
+    self.val_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 182, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 135, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 396, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 311, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 410, in validation_step
+    return self._forward_redirection(self.model, self.lightning_module, "validation_step", *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+    wrapper_output = wrapper_module(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1822, in forward
+    loss = self.module(*inputs, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+    out = method(*_args, **_kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 172, in validation_step
+    outputs = self(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 67, in forward
+    return self.model(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 568, in forward
+    outputs, m_1_prev, z_prev, x_prev, early_stop = self.iteration(
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 393, in iteration
+    z = self.extra_msa_stack(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 1217, in forward
+    m, z = b(m, z)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 1111, in clear_cache
+    return b(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 634, in forward
+    m, z = self._compute_opm(input_tensors=input_tensors,
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 342, in _compute_opm
+    opm = self.outer_product_mean(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/outer_product_mean.py", line 158, in forward
+    return self._forward(m, mask, chunk_size, inplace_safe)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/outer_product_mean.py", line 137, in _forward
+    norm = torch.einsum("...abc,...adc->...bdc", mask, mask)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/functional.py", line 377, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmStridedBatchedExFix(handle, opa, opb, (int)m, (int)n, (int)k, (void*)&falpha, a, CUDA_R_16BF, (int)lda, stridea, b, CUDA_R_16BF, (int)ldb, strideb, (void*)&fbeta, c, CUDA_R_16BF, (int)ldc, stridec, (int)num_batches, CUDA_R_32F, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`
+[2024-09-23 00:13:16,675] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 3090784 closing signal SIGTERM
+[2024-09-23 00:13:16,675] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 3090786 closing signal SIGTERM
+[rank: 2] Received SIGTERM: 15
+[rank: 0] Received SIGTERM: 15
+[2024-09-23 00:13:46,675] torch.distributed.elastic.multiprocessing.api: [WARNING] Unable to shutdown process 3090786 via Signals.SIGTERM, forcefully exiting via Signals.SIGKILL
+[2024-09-23 00:13:47,453] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 1 (pid: 3090785) of binary: /work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/python
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.1.2', 'console_scripts', 'torchrun')())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_openfold.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-09-23_00:13:16
+  host      : c315-006.ls6.tacc.utexas.edu
+  rank      : 10 (local_rank: 1)
+  exitcode  : 1 (pid: 3090785)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: c315-006: task 3: Exited with exit code 1
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/distogram', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/experimentally_resolved', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/fape', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/plddt_loss', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/masked_msa', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/supervised_chi', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/violation', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/tm', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/chain_center_of_mass', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/unscaled_loss', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/loss', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/lddt_ca', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/drmsd_ca', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/alignment_rmsd', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/gdt_ts', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('val/gdt_ha', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/distogram_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/experimentally_resolved_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/fape_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/plddt_loss_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/masked_msa_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/supervised_chi_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/violation_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/tm_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/chain_center_of_mass_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/unscaled_loss_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/loss_epoch', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/lddt_ca', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:439: It is recommended to use `self.log('train/drmsd_ca', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** JOB 1967532 ON c303-002 CANCELLED AT 2024-09-23T00:26:05 ***
+[2024-09-23 00:26:05,736] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGTERM death signal, shutting down workers
+[2024-09-23 00:26:05,740] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2131284 closing signal SIGTERM
+[2024-09-23 00:26:05,740] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGTERM death signal, shutting down workers
+[2024-09-23 00:26:05,741] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 1728522 closing signal SIGTERM
+[2024-09-23 00:26:05,741] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 1728523 closing signal SIGTERM
+[2024-09-23 00:26:05,741] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 1728524 closing signal SIGTERM
+[2024-09-23 00:26:05,742] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2131285 closing signal SIGTERM
+[2024-09-23 00:26:05,742] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2131286 closing signal SIGTERM
+[2024-09-23 00:26:05,744] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGTERM death signal, shutting down workers
+[2024-09-23 00:26:05,745] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 999438 closing signal SIGTERM
+[2024-09-23 00:26:05,745] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 999439 closing signal SIGTERM
+[2024-09-23 00:26:05,745] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 999440 closing signal SIGTERM
+srun: forcing job termination
+slurmstepd: error: *** STEP 1967532.0 ON c303-002 CANCELLED AT 2024-09-23T00:26:05 ***
+[rank: 0] Received SIGTERM: 15
+[2024-09-23 00:26:05,768] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGTERM death signal, shutting down workers
+[2024-09-23 00:26:05,767] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGTERM death signal, shutting down workers
+[2024-09-23 00:26:05,773] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 3640955 closing signal SIGTERM
+[2024-09-23 00:26:05,768] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 1281752 closing signal SIGTERM
+[2024-09-23 00:26:05,768] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 1281753 closing signal SIGTERM
+[2024-09-23 00:26:05,768] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 1281754 closing signal SIGTERM
+[2024-09-23 00:26:05,774] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 3640956 closing signal SIGTERM
+[2024-09-23 00:26:05,775] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 3640957 closing signal SIGTERM
+[rank: 0] Received SIGTERM: 15
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 43, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+    return function(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 579, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 986, in _run
+    results = self._run_stage()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1030, in _run_stage
+    self.fit_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+    self.advance()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 141, in run
+    self.on_advance_end(data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 295, in on_advance_end
+    self.val_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 182, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 135, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 396, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 311, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 410, in validation_step
+    return self._forward_redirection(self.model, self.lightning_module, "validation_step", *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+    wrapper_output = wrapper_module(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1822, in forward
+    loss = self.module(*inputs, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+    out = method(*_args, **_kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 172, in validation_step
+    outputs = self(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 67, in forward
+    return self.model(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 568, in forward
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 43, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+    outputs, m_1_prev, z_prev, x_prev, early_stop = self.iteration(
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 423, in iteration
+    return function(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 579, in _fit_impl
+    m, z, s = self.evoformer(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 986, in _run
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    results = self._run_stage()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1030, in _run_stage
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 1017, in forward
+    self.fit_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+    self.advance()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 141, in run
+    self.on_advance_end(data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 295, in on_advance_end
+    m, z = checkpoint_blocks(
+  File "/work/10110/abhinav22/ls6/openfold/openfold/utils/checkpointing.py", line 85, in checkpoint_blocks
+    self.val_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 182, in _decorator
+    return exec(blocks, args)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/utils/checkpointing.py", line 72, in exec
+    return loop_run(self, *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 135, in run
+    a = wrap(block(*a))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 396, in _evaluation_step
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 311, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 410, in validation_step
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 532, in forward
+    return self._forward_redirection(self.model, self.lightning_module, "validation_step", *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+    z = self.pair_stack(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    wrapper_output = wrapper_module(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 223, in forward
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    self.tri_att_start(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    ret_val = func(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1822, in forward
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    loss = self.module(*inputs, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/triangular_attention.py", line 141, in forward
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+    x = self.mha(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    out = method(*_args, **_kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 172, in validation_step
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    outputs = self(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/primitives.py", line 542, in forward
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 67, in forward
+    return self.model(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    o = _attention(q, k, v, biases)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/primitives.py", line 272, in _attention
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    a = torch.matmul(query, key)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 568, in forward
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2134610) is killed by signal: Terminated. 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 765, in <module>
+    outputs, m_1_prev, z_prev, x_prev, early_stop = self.iteration(
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 393, in iteration
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 505, in main
+    z = self.extra_msa_stack(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    trainer.fit(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 543, in fit
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    call._call_and_handle_interrupt(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 60, in _call_and_handle_interrupt
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 1217, in forward
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 43, in _call_and_handle_interrupt
+    trainer._teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1009, in _teardown
+    m, z = b(m, z)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 1111, in clear_cache
+    self.strategy.teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/ddp.py", line 419, in teardown
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 105, in launch
+    return b(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return function(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 579, in _fit_impl
+    super().teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/parallel.py", line 133, in teardown
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 642, in forward
+    self.msa_att_row(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    super().teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 535, in teardown
+    self._run(model, ckpt_path=ckpt_path)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 986, in _run
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    self.lightning_module.cpu()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/utilities/device_dtype_mixin.py", line 81, in cpu
+    results = self._run_stage()
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1030, in _run_stage
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/msa.py", line 281, in forward
+    self.fit_loop.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 205, in run
+    _update_properties(self, device=torch.device("cpu"))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/utilities/device_dtype_mixin.py", line 112, in _update_properties
+    for module in root.modules():
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2332, in modules
+    m = self.mha(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    for _, module in self.named_modules():
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2377, in named_modules
+    self.advance()
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/primitives.py", line 523, in forward
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 363, in advance
+    yield from module.named_modules(memo, submodule_prefix, remove_duplicate)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2377, in named_modules
+    o = attention_core(q, k, v, *((biases + [None] * 2)[:2]))
+    self.epoch_loop.run(self._data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/autograd/function.py", line 539, in apply
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 141, in run
+    yield from module.named_modules(memo, submodule_prefix, remove_duplicate)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2377, in named_modules
+    self.on_advance_end(data_fetcher)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 295, in on_advance_end
+    yield from module.named_modules(memo, submodule_prefix, remove_duplicate)
+    self.val_loop.run()
+  [Previous line repeated 4 more times]
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/work/10110/abhinav22/ls6/openfold/openfold/utils/kernel/attention_core.py", line 38, in forward
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/utilities.py", line 182, in _decorator
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2131418) is killed by signal: Terminated. 
+    attention_logits = torch.matmul(
+    return loop_run(self, *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/signal_connector.py", line 34, in __call__
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 135, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 396, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 311, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 410, in validation_step
+    return self._forward_redirection(self.model, self.lightning_module, "validation_step", *args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 640, in __call__
+    wrapper_output = wrapper_module(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1822, in forward
+    loss = self.module(*inputs, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 633, in wrapped_forward
+    signal_handler(signum, frame)
+    out = method(*_args, **_kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/signal_connector.py", line 107, in _sigterm_notifier_fn
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 172, in validation_step
+    outputs = self(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    log.info(rank_prefixed_message(f"Received SIGTERM: {signum}", self.trainer.local_rank))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1140, in local_rank
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return getattr(self.strategy, "local_rank", 0)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1125, in strategy
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 67, in forward
+    @property
+    return self.model(batch)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    _error_if_any_worker_fails()
+    return self._call_impl(*args, **kwargs)
+RuntimeError: DataLoader worker (pid 2133568) is killed by signal: Terminated. 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 765, in <module>
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    main(args)
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 505, in main
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 568, in forward
+    trainer.fit(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 543, in fit
+    call._call_and_handle_interrupt(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 60, in _call_and_handle_interrupt
+    outputs, m_1_prev, z_prev, x_prev, early_stop = self.iteration(
+    trainer._teardown()
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/model.py", line 423, in iteration
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1009, in _teardown
+    m, z, s = self.evoformer(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    self.strategy.teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/ddp.py", line 419, in teardown
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    super().teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/parallel.py", line 133, in teardown
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 1017, in forward
+    super().teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 535, in teardown
+    self.lightning_module.cpu()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/utilities/device_dtype_mixin.py", line 82, in cpu
+    return super().cpu()
+    m, z = checkpoint_blocks(
+  File "/work/10110/abhinav22/ls6/openfold/openfold/utils/checkpointing.py", line 85, in checkpoint_blocks
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 967, in cpu
+    return self._apply(lambda t: t.cpu())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    return exec(blocks, args)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/utils/checkpointing.py", line 72, in exec
+    module._apply(fn)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    a = wrap(block(*a))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    module._apply(fn)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    module._apply(fn)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 833, in _apply
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 532, in forward
+    param_applied = fn(param)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 967, in <lambda>
+    z = self.pair_stack(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._apply(lambda t: t.cpu())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 2134990) is killed by signal: Terminated. 
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/evoformer.py", line 223, in forward
+    self.tri_att_start(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/triangular_attention.py", line 141, in forward
+    x = self.mha(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/primitives.py", line 542, in forward
+    o = _attention(q, k, v, biases)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/primitives.py", line 277, in _attention
+    a = softmax_no_cast(a, -1)
+  File "/work/10110/abhinav22/ls6/openfold/openfold/model/primitives.py", line 261, in softmax_no_cast
+    s = torch.nn.functional.softmax(t, dim=dim)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/functional.py", line 1856, in softmax
+    ret = input.softmax(dim)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 1731875) is killed by signal: Terminated. 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 765, in <module>
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/train_openfold.py", line 505, in main
+    trainer.fit(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 543, in fit
+    call._call_and_handle_interrupt(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 60, in _call_and_handle_interrupt
+    trainer._teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1009, in _teardown
+    self.strategy.teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/ddp.py", line 419, in teardown
+    super().teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/parallel.py", line 133, in teardown
+    super().teardown()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 535, in teardown
+    self.lightning_module.cpu()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/lightning_fabric/utilities/device_dtype_mixin.py", line 82, in cpu
+    return super().cpu()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 967, in cpu
+    return self._apply(lambda t: t.cpu())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 833, in _apply
+    param_applied = fn(param)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/nn/modules/module.py", line 967, in <lambda>
+    return self._apply(lambda t: t.cpu())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 1730354) is killed by signal: Terminated. 
+Exception in thread NetStatThr:
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+Exception in thread ChkStopThr:
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/threading.py", line 953, in run
+    self.run()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 268, in check_network_status
+    self._target(*self._args, **self._kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 286, in check_stop_status
+    self._loop_check_status(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 224, in _loop_check_status
+    local_handle = request()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 848, in deliver_network_status
+    self._loop_check_status(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 224, in _loop_check_status
+    local_handle = request()
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 840, in deliver_stop_status
+    return self._deliver_network_status(status)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 510, in _deliver_network_status
+    return self._deliver_stop_status(status)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 494, in _deliver_stop_status
+    return self._deliver_record(record)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 459, in _deliver_record
+    return self._deliver_record(record)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 459, in _deliver_record
+    handle = mailbox._deliver_record(record, interface=self)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 455, in _deliver_record
+    handle = mailbox._deliver_record(record, interface=self)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/mailbox.py", line 455, in _deliver_record
+    interface._publish(record)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    interface._publish(record)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self._sock_client.send_record_publish(record)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+    self.send_server_request(server_req)  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+    self._send_message(msg)  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    self._sendall_with_error_handle(header + data)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+srun: error: c316-003: task 5: Killed
+srun: error: c303-002: task 0: Killed
+srun: error: c316-002: task 4: Killed

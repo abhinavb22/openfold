@@ -206,7 +206,7 @@ def prep_output(out, batch, feature_dict, feature_processor, config_preset, mult
     # For multi-chain FASTAs
     ri = feature_dict["residue_index"]
     chain_index = (ri - numpy.arange(ri.shape[0])) / multimer_ri_gap
-    chain_index = chain_index.astype(numpy.int64)
+    chain_index = chain_index.astype(numpy.int64)    
     cur_chain = 0
     prev_chain_max = 0
     for i, c in enumerate(chain_index):

@@ -1,0 +1,3 @@
+[2024-09-22 21:00:53,808] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[2024-09-22 21:00:53,959] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+srun: error: c316-003: task 1: Killed

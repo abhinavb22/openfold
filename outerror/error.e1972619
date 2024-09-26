@@ -1,0 +1,66 @@
+[2024-09-25 11:21:49,181] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+[rank: 1] Seed set to 77843
+[rank: 0] Seed set to 77843
+[rank: 2] Seed set to 77843
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/slurm_jobs/../train_openfold.py", line 766, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/openfold/slurm_jobs/../train_openfold.py", line 766, in <module>
+  File "/work/10110/abhinav22/ls6/openfold/slurm_jobs/../train_openfold.py", line 766, in <module>
+    main(args)
+      File "/work/10110/abhinav22/ls6/openfold/slurm_jobs/../train_openfold.py", line 337, in main
+main(args)
+  File "/work/10110/abhinav22/ls6/openfold/slurm_jobs/../train_openfold.py", line 337, in main
+    with open(args.experiment_config_json, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'custom_config.json'
+    with open(args.experiment_config_json, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'custom_config.json'
+    main(args)
+  File "/work/10110/abhinav22/ls6/openfold/slurm_jobs/../train_openfold.py", line 337, in main
+    with open(args.experiment_config_json, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'custom_config.json'
+[2024-09-25 11:23:09,688] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 1184153) of binary: /work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/python
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.1.2', 'console_scripts', 'torchrun')())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+../train_openfold.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-09-25_11:23:09
+  host      : c317-010.ls6.tacc.utexas.edu
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 1184154)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-09-25_11:23:09
+  host      : c317-010.ls6.tacc.utexas.edu
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 1184155)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-09-25_11:23:09
+  host      : c317-010.ls6.tacc.utexas.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1184153)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: c317-010: task 0: Exited with exit code 1

@@ -472,6 +472,7 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
             # TODO: Add pdb and core exts to data_pipeline for multimer
             path += ext
             if ext == ".cif":
+                #print(path, mmcif_id, flush=True)
                 data = self._parse_mmcif(
                     path, mmcif_id, self.alignment_dir, alignment_index,
                 )
@@ -527,10 +528,13 @@ def aa_count_filter(seqs: list, max_single_aa_prop: float) -> bool:
     return largest_single_aa_prop <= max_single_aa_prop
 
 
-def all_seq_len_filter(seqs: list, minimum_number_of_residues: int) -> bool:
-    """Check if the total combined sequence lengths are >= minimum_numer_of_residues"""
+def all_seq_len_filter(seqs: list, maximum_number_of_residues:int, minimum_number_of_residues: int) -> bool:
+    """Check if the total combined sequence lengths 
+    are <= maximum_numer_of_residues, and each seq has atleast
+    minimum_number_of_residues"""
     total_len = sum([len(i) for i in seqs])
-    return total_len >= minimum_number_of_residues
+    minimum_length = min([len(i) for i in seqs])
+    return (minimum_length >= minimum_number_of_residues) and (total_len <= maximum_number_of_residues)
 
 
 class OpenFoldDataset(torch.utils.data.Dataset):
@@ -688,7 +692,8 @@ class OpenFoldMultimerDataset(OpenFoldDataset):
         is_distillation: bool,
         max_resolution: float = 9.,
         max_single_aa_prop: float = 0.8,
-        minimum_number_of_residues: int = 200,
+        maximum_number_of_residues:int=1000,
+        minimum_number_of_residues: int = 50,
         *args, **kwargs
     ) -> bool:
         """
@@ -703,6 +708,7 @@ class OpenFoldMultimerDataset(OpenFoldDataset):
                     aa_count_filter(seqs=seqs,
                                     max_single_aa_prop=max_single_aa_prop),
                     (not is_distillation or all_seq_len_filter(seqs=seqs,
+                                                               maximum_number_of_residues=maximum_number_of_residues,
                                                                minimum_number_of_residues=minimum_number_of_residues))])
 
     @staticmethod
@@ -868,6 +874,7 @@ class OpenFoldDataModule(pl.LightningDataModule):
                  template_release_dates_cache_path: Optional[str] = None,
                  batch_seed: Optional[int] = None,
                  train_epoch_len: int = 50000,
+                 val_epoch_len:int=10000,
                  _distillation_structure_index_path: Optional[str] = None,
                  alignment_index_path: Optional[str] = None,
                  distillation_alignment_index_path: Optional[str] = None,
@@ -899,6 +906,7 @@ class OpenFoldDataModule(pl.LightningDataModule):
         self.obsolete_pdbs_file_path = obsolete_pdbs_file_path
         self.batch_seed = batch_seed
         self.train_epoch_len = train_epoch_len
+        self.val_epoch_len=val_epoch_len
 
         if self.train_data_dir is None and self.predict_data_dir is None:
             raise ValueError(
@@ -999,12 +1007,28 @@ class OpenFoldDataModule(pl.LightningDataModule):
             )
 
             if self.val_data_dir is not None:
+                '''
                 self.eval_dataset = dataset_gen(
                     data_dir=self.val_data_dir,
                     alignment_dir=self.val_alignment_dir,
                     filter_path=None,
                     max_template_hits=self.config.eval.max_template_hits,
                     mode="eval",
+                )
+                '''
+                eval_dataset = dataset_gen(
+                    data_dir=self.val_data_dir,
+                    alignment_dir=self.val_alignment_dir,
+                    filter_path=None,
+                    max_template_hits=self.config.eval.max_template_hits,
+                    mode="eval",
+                )
+                self.train_dataset = OpenFoldDataset(
+                    datasets=[eval_dataset],
+                    #probabilities=probabilities,
+                    epoch_len=self.val_epoch_len,
+                    generator=generator,
+                    _roll_at_init=False,
                 )
             else:
                 self.eval_dataset = None
@@ -1146,6 +1170,7 @@ class OpenFoldMultimerDataModule(OpenFoldDataModule):
             )
 
             if self.val_data_dir is not None:
+                '''
                 self.eval_dataset = dataset_gen(
                     data_dir=self.val_data_dir,
                     alignment_dir=self.val_alignment_dir,
@@ -1154,6 +1179,24 @@ class OpenFoldMultimerDataModule(OpenFoldDataModule):
                     max_template_hits=self.config.eval.max_template_hits,
                     mode="eval",
                 )
+                '''
+                probabilities = [1.]
+                eval_dataset = dataset_gen(
+                    data_dir=self.val_data_dir,
+                    alignment_dir=self.val_alignment_dir,
+                    mmcif_data_cache_path=self.val_mmcif_data_cache_path,
+                    filter_path=None,
+                    max_template_hits=self.config.eval.max_template_hits,
+                    mode="eval",
+                )
+                self.eval_dataset = OpenFoldMultimerDataset(
+                    datasets=[eval_dataset],
+                    probabilities=probabilities,
+                    epoch_len=self.val_epoch_len,
+                    generator=generator,
+                    _roll_at_init=True,
+                )
+
             else:
                 self.eval_dataset = None
         else:

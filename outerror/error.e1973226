@@ -1,0 +1,48 @@
+[2024-09-25 17:35:42,790] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/python: can't open file '/work/10110/abhinav22/ls6/openfold/slurm_jobs/train_openfold.py': [Errno 2] No such file or directory
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/python: can't open file '/work/10110/abhinav22/ls6/openfold/slurm_jobs/train_openfold.py': [Errno 2] No such file or directory
+/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/python: can't open file '/work/10110/abhinav22/ls6/openfold/slurm_jobs/train_openfold.py': [Errno 2] No such file or directory
+[2024-09-25 17:35:48,258] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 2) local_rank: 0 (pid: 3678665) of binary: /work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/python
+Traceback (most recent call last):
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.1.2', 'console_scripts', 'torchrun')())
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/work/10110/abhinav22/ls6/src/miniforge/envs/openfold_cuda12/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_openfold.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-09-25_17:35:48
+  host      : c317-014.ls6.tacc.utexas.edu
+  rank      : 1 (local_rank: 1)
+  exitcode  : 2 (pid: 3678666)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-09-25_17:35:48
+  host      : c317-014.ls6.tacc.utexas.edu
+  rank      : 2 (local_rank: 2)
+  exitcode  : 2 (pid: 3678667)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-09-25_17:35:48
+  host      : c317-014.ls6.tacc.utexas.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 3678665)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: c317-014: task 0: Exited with exit code 1

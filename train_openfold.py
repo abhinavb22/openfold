@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 import json
+import numpy as np
 import torch.distributed as dist
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks.lr_monitor import LearningRateMonitor
@@ -15,6 +16,9 @@ from pytorch_lightning import seed_everything
 import torch
 import wandb
 from deepspeed.utils import zero_to_fp32 
+from openfold.np import protein
+from openfold.data import feature_pipeline
+from openfold.utils.script_utils import prep_output
 
 from openfold.config import model_config
 from openfold.data.data_modules import OpenFoldDataModule, OpenFoldMultimerDataModule
@@ -102,7 +106,7 @@ class OpenFoldWrapper(pl.LightningModule):
 
         # Run the model
         outputs = self(batch)
-
+        #feature_dict = {k:v for k,v in batch.items()}
         # Remove the recycling dimension
         batch = tensor_tree_map(lambda t: t[..., -1], batch)
 
@@ -115,7 +119,34 @@ class OpenFoldWrapper(pl.LightningModule):
         loss, loss_breakdown = self.loss(
             outputs, batch, _return_breakdown=True
         )
+        '''
+        config_protein = model_config(
+                        args.config_preset                        
+                        )
 
+        feature_processor = feature_pipeline.FeaturePipeline(config_protein.data)
+        
+        unrelaxed_protein = prep_output(
+                tensor_tree_map(lambda x: np.array(x.cpu()), outputs),
+                tensor_tree_map(lambda x: np.array(x[..., -1].cpu()),batch),
+                feature_dict,
+                feature_processor,
+                args.config_preset,
+                200,
+                False
+            )
+        
+        unrelaxed_protein = protein.from_prediction(
+                features=tensor_tree_map(lambda x: np.array(x.cpu().detach().to(torch.float32)), batch),
+                result=tensor_tree_map(lambda x: np.array(x.cpu().detach().to(torch.float32)), outputs))
+        print(unrelaxed_protein, flush=True)
+        print(batch.keys(), flush=True)
+
+        with open(f"mock_protein.pdb", 'w') as fp:                                
+            fp.write(protein.to_pdb(unrelaxed_protein))
+        with open("mock_coords.json",'w') as f:
+            json.dump(batch["all_atom_positions"],f,indent=4)            
+        '''
         # Log it
         self._log(loss_breakdown, batch, outputs)
 
@@ -159,6 +190,7 @@ class OpenFoldWrapper(pl.LightningModule):
         # Restore the model weights to normal
         self.model.load_state_dict(self.cached_weights)
         self.cached_weights = None
+        torch.cuda.empty_cache()
 
     def _compute_validation_metrics(self,
                                     batch,
@@ -210,8 +242,7 @@ class OpenFoldWrapper(pl.LightningModule):
 
             metrics["alignment_rmsd"] = alignment_rmsd
             metrics["gdt_ts"] = gdt_ts_score
-            metrics["gdt_ha"] = gdt_ha_score
-
+            metrics["gdt_ha"] = gdt_ha_score        
         return metrics
 
     def configure_optimizers(self, 
@@ -300,12 +331,13 @@ def main(args):
         args.config_preset, 
         train=True, 
         low_prec=is_low_precision,
-    ) 
+    )
+    #print(config, flush=True) 
     if args.experiment_config_json: 
         with open(args.experiment_config_json, 'r') as f:
             custom_config_dict = json.load(f)
         config.update_from_flattened_dict(custom_config_dict)
-
+    #print(config, flush=True)
     model_module = OpenFoldWrapper(config)
 
     if args.resume_from_ckpt:
@@ -470,6 +502,21 @@ def main(args):
     print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE')}", flush=True)
     print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK')}", flush=True)
     #print(f"Number of GPUs in DeepSpeed config: {trainer.strategy.config}", flush=True)  
+
+    for name, param in model_module.named_parameters():
+        print(name, param.requires_grad, flush=True)
+    '''    
+    trainable_params = ["model.aux_heads.tm.linear.weight", "model.aux_heads.tm.linear.bias"]
+    
+    #for name, param in model_module.model.state_dict().items():
+    for name, param in model_module.named_parameters():
+        if name in trainable_params:
+            param.requires_grad = True
+        else:            
+            param.requires_grad = False
+        print(name, param.requires_grad)
+    '''   
+
 
     trainer.fit(
         model_module,
@@ -646,6 +693,14 @@ if __name__ == "__main__":
             "of training data means that training datasets have no "
             "well-defined length. This virtual length affects frequency of "
             "validation & checkpointing (by default, one of each per epoch)."
+        )
+    )
+    parser.add_argument(
+        "--val_epoch_len", type=int, default=10000,
+        help=(
+            "The virtual length of each validation epoch. Stochastic filtering "
+            "of validation data means that validation datasets have no "
+            "well-defined length."
         )
     )
     parser.add_argument(
