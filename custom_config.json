@@ -1,10 +1,10 @@
 {
 		"data.common.max_recycling_iters": 3,
 		"data.data_module.use_small_bfd":true,
-		"data.data_module.data_loaders.num_workers":8,
+		"data.data_module.data_loaders.num_workers":10,
 		"globals.use_deepspeed_evo_attention":true,
 		"data.eval.crop": true,		
-		"data.eval.crop_size": 384,
-		"data.train.crop_size": 384,
+		"data.eval.crop_size": 128,
+		"data.train.crop_size": 128,
 		"model.recycle_early_stop_tolerance":-1			
 }

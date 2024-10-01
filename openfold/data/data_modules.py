@@ -472,7 +472,7 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
             # TODO: Add pdb and core exts to data_pipeline for multimer
             path += ext
             if ext == ".cif":
-                #print(path, mmcif_id, flush=True)
+                print(path, mmcif_id, flush=True)
                 data = self._parse_mmcif(
                     path, mmcif_id, self.alignment_dir, alignment_index,
                 )

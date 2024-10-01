@@ -318,6 +318,7 @@ def get_model_state_dict_from_ds_checkpoint(checkpoint_dir):
 def main(args):
     if(args.seed is not None):
         seed_everything(args.seed, workers=True) 
+    torch.multiprocessing.set_sharing_strategy('file_system')
 
     is_low_precision = args.precision in [
         "bf16-mixed", "16", "bf16", "16-true", "16-mixed", "bf16-mixed"]
@@ -503,8 +504,6 @@ def main(args):
     print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK')}", flush=True)
     #print(f"Number of GPUs in DeepSpeed config: {trainer.strategy.config}", flush=True)  
 
-    for name, param in model_module.named_parameters():
-        print(name, param.requires_grad, flush=True)
     '''    
     trainable_params = ["model.aux_heads.tm.linear.weight", "model.aux_heads.tm.linear.bias"]
     
