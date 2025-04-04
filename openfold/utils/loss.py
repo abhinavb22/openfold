@@ -561,12 +561,14 @@ def lddt_loss(
 
 def distogram_loss(
     logits,
+    asym_id,
     pseudo_beta,
     pseudo_beta_mask,
     min_bin=2.3125,
     max_bin=21.6875,
     no_bins=64,
     eps=1e-6,
+    cross_rec_wt=0.5,
     **kwargs,
 ):
     boundaries = torch.linspace(
@@ -582,16 +584,13 @@ def distogram_loss(
         dim=-1,
         keepdims=True,
     )
-
     true_bins = torch.sum(dists > boundaries, dim=-1)
-
     errors = softmax_cross_entropy(
         logits,
         torch.nn.functional.one_hot(true_bins, no_bins),
     )
 
     square_mask = pseudo_beta_mask[..., None] * pseudo_beta_mask[..., None, :]
-
     # FP16-friendly sum. Equivalent to:
     # mean = (torch.sum(errors * square_mask, dim=(-1, -2)) /
     #         (eps + torch.sum(square_mask, dim=(-1, -2))))
@@ -603,9 +602,18 @@ def distogram_loss(
 
     # Average over the batch dimensions
     mean = torch.mean(mean)
+    
+    pair_mask = (asym_id[..., None] != asym_id[..., None, :]).to(dtype=square_mask.dtype)
+    pair_mask = pair_mask*square_mask
+    denom = eps + torch.sum(pair_mask, dim=(-1, -2))
+    cross_rec_mean = errors * pair_mask
+    cross_rec_mean = torch.sum(cross_rec_mean, dim=-1)
+    cross_rec_mean = cross_rec_mean / denom[..., None]
+    cross_rec_mean = torch.sum(cross_rec_mean, dim=-1)
+    cross_rec_mean = torch.mean(cross_rec_mean)
+    mean = (1-cross_rec_wt)*mean + cross_rec_wt*cross_rec_mean
 
     return mean
-
 
 def _calculate_bin_centers(boundaries: torch.Tensor):
     step = boundaries[1] - boundaries[0]

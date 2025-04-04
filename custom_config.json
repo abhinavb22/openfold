@@ -11,5 +11,8 @@
 		"loss.fape.intra_chain_backbone.weight":1.0,
 		"loss.fape.interface_backbone.weight":1.0,
 		"loss.fape.weight":1.0,
+  	"loss.distogram.weight":1.0,
+  	"loss.distogram.cross_rec_wt":0.75,
+  	"loss.chain_center_of_mass.weight":1.0,
 		"model.recycle_early_stop_tolerance":-1
 }

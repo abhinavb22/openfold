@@ -672,6 +672,7 @@ config = mlc.ConfigDict(
                 "no_bins": 64,
                 "eps": eps,  # 1e-6,
                 "weight": 0.3,
+                "cross_rec_wt":0.0,
             },
             "experimentally_resolved": {
                 "eps": eps,  # 1e-8,
