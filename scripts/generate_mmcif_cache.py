@@ -11,14 +11,17 @@ sys.path.append(".") # an innocent hack to get this to run from the top level
 from tqdm import tqdm
 
 from openfold.data.mmcif_parsing import parse 
-
+import openfold.data.mmcif_parsing as parsing_module
+print(f"Loaded module from: {parsing_module.__file__}")
 
 def parse_file(f, args, chain_cluster_size_dict=None):
     with open(os.path.join(args.mmcif_dir, f), "r") as fp:
         mmcif_string = fp.read()
     file_id = os.path.splitext(f)[0]
     mmcif = parse(file_id=file_id, mmcif_string=mmcif_string)
+    print(parse)
     if mmcif.mmcif_object is None:
+        print(mmcif)
         logging.info(f"Could not parse {f}. Skipping...")
         return {}
     else:
@@ -77,6 +80,7 @@ def main(args):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format='%(processName)s: %(message)s')
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "mmcif_dir", type=str, help="Directory containing mmCIF files"

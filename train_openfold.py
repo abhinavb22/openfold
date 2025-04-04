@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 import logging
 import os
 import sys
@@ -82,13 +83,14 @@ class OpenFoldWrapper(pl.LightningModule):
                     indiv_loss,
                     on_step=False, on_epoch=True, logger=True, sync_dist=False,
                 )
-
+        '''
         with torch.no_grad():
             other_metrics = self._compute_validation_metrics(
                 batch,
                 outputs,
                 superimposition_metrics=(not train)
             )
+        
 
         for k, v in other_metrics.items():
             self.log(
@@ -97,59 +99,36 @@ class OpenFoldWrapper(pl.LightningModule):
                 prog_bar = (k == 'loss'),
                 on_step=False, on_epoch=True, logger=True, sync_dist=False,
             )
+        '''
 
     def training_step(self, batch, batch_idx):
+        t0 = datetime.now()
         if (self.ema.device != batch["aatype"].device):
             self.ema.to(batch["aatype"].device)
-        
         ground_truth = batch.pop('gt_features', None)
-
-        # Run the model
+        #print(batch["batch_idx"], flush=True)
+        # Run the model        
         outputs = self(batch)
+        #print(batch["batch_idx"], "DONE", flush=True)
         #feature_dict = {k:v for k,v in batch.items()}
         # Remove the recycling dimension
         batch = tensor_tree_map(lambda t: t[..., -1], batch)
-
+        
+        ''''''
         if self.is_multimer:
             batch = multi_chain_permutation_align(out=outputs,
                                                   features=batch,
                                                   ground_truth=ground_truth)
+        
 
         # Compute loss
         loss, loss_breakdown = self.loss(
             outputs, batch, _return_breakdown=True
         )
-        '''
-        config_protein = model_config(
-                        args.config_preset                        
-                        )
-
-        feature_processor = feature_pipeline.FeaturePipeline(config_protein.data)
         
-        unrelaxed_protein = prep_output(
-                tensor_tree_map(lambda x: np.array(x.cpu()), outputs),
-                tensor_tree_map(lambda x: np.array(x[..., -1].cpu()),batch),
-                feature_dict,
-                feature_processor,
-                args.config_preset,
-                200,
-                False
-            )
-        
-        unrelaxed_protein = protein.from_prediction(
-                features=tensor_tree_map(lambda x: np.array(x.cpu().detach().to(torch.float32)), batch),
-                result=tensor_tree_map(lambda x: np.array(x.cpu().detach().to(torch.float32)), outputs))
-        print(unrelaxed_protein, flush=True)
-        print(batch.keys(), flush=True)
-
-        with open(f"mock_protein.pdb", 'w') as fp:                                
-            fp.write(protein.to_pdb(unrelaxed_protein))
-        with open("mock_coords.json",'w') as f:
-            json.dump(batch["all_atom_positions"],f,indent=4)            
-        '''
         # Log it
         self._log(loss_breakdown, batch, outputs)
-
+        print(f"Time taken for {batch['batch_idx']} = {datetime.now() - t0}", flush=True)
         return loss
 
     def on_before_zero_grad(self, *args, **kwargs):
@@ -167,9 +146,11 @@ class OpenFoldWrapper(pl.LightningModule):
             self.model.load_state_dict(self.ema.state_dict()["params"])
 
         ground_truth = batch.pop('gt_features', None)
+        #print(batch["batch_idx"], flush=True)
 
         # Run the model
         outputs = self(batch)
+        #print(batch["batch_idx"], "DONE", flush=True)
         batch = tensor_tree_map(lambda t: t[..., -1], batch)
 
         batch["use_clamped_fape"] = 0.
@@ -185,6 +166,7 @@ class OpenFoldWrapper(pl.LightningModule):
         )
 
         self._log(loss_breakdown, batch, outputs, train=False)
+        torch.distributed.barrier()
         
     def on_validation_epoch_end(self):
         # Restore the model weights to normal
@@ -319,7 +301,6 @@ def main(args):
     if(args.seed is not None):
         seed_everything(args.seed, workers=True) 
     torch.multiprocessing.set_sharing_strategy('file_system')
-
     is_low_precision = args.precision in [
         "bf16-mixed", "16", "bf16", "16-true", "16-mixed", "bf16-mixed"]
     if not is_low_precision:
@@ -353,14 +334,34 @@ def main(args):
             if 'module' in sd:
                 sd = {k[len('module.'):]: v for k, v in sd['module'].items()}
                 import_openfold_weights_(model=model_module, state_dict=sd)
-            elif 'state_dict' in sd:
+            elif 'state_dict' in sd:               
                 import_openfold_weights_(
                     model=model_module, state_dict=sd['state_dict'])
+                model_module.ema.load_state_dict(sd["ema"])
             else:
                 # Loading from pre-trained model
-                sd = {'model.'+k: v for k, v in sd.items()}
-                import_openfold_weights_(model=model_module, state_dict=sd)
-            logging.info("Successfully loaded model weights...")
+                #sd = {'model.'+k: v for k, v in sd.items()}
+                correct_sd= {}
+                for k,v in sd.items():
+                  if k.startswith("model."):
+                    correct_sd[k] = v
+                  else:
+                    correct_sd['model.'+k] = v
+                import_openfold_weights_(model=model_module, state_dict=correct_sd)   
+                model_module.ema.load_state_dict(sd["ema"])
+            print("Successfully loaded model weights...")
+            '''
+            def initialize_new_head(head):
+                for module in head.modules():
+                    if isinstance(module, nn.Linear):
+                        nn.init.xavier_uniform_(module.weight)  # Xavier initialization
+                        if module.bias is not None:
+                            nn.init.zeros_(module.bias)
+
+            if hasattr(model_module, "aux_heads") and hasattr(model_module.aux_heads, "interaction_prob"):
+                initialize_new_head(model_module.aux_heads.interaction_prob)
+
+            '''
 
         else:  # Loads a checkpoint to start from a specific time step
             if os.path.isdir(args.resume_from_ckpt):
@@ -380,7 +381,7 @@ def main(args):
     if (args.script_modules):
         script_preset_(model_module)
 
-    if "multimer" in args.config_preset:
+    if "multimer" in args.config_preset: #OpenFoldMultimerDataModule
         data_module = OpenFoldMultimerDataModule(
             config=config.data,
             batch_seed=args.seed,
@@ -399,7 +400,7 @@ def main(args):
     callbacks = []
     if (args.checkpoint_every_epoch):
         mc = ModelCheckpoint(
-            every_n_epochs=1,
+            every_n_epochs=args.checkpoint_every_epoch,
             auto_insert_metric_name=False,
             save_top_k=-1,
         )
@@ -503,11 +504,18 @@ def main(args):
     print(f"WORLD_SIZE: {os.environ.get('WORLD_SIZE')}", flush=True)
     print(f"LOCAL_RANK: {os.environ.get('LOCAL_RANK')}", flush=True)
     #print(f"Number of GPUs in DeepSpeed config: {trainer.strategy.config}", flush=True)  
-
-    '''    
+    '''
+    for name, param in model_module.named_parameters():
+        if name.startswith("model.structure_module"):
+            param.requires_grad = False
+        else:
+            param.requires_grad = True
+        print(name, param.requires_grad)
+    '''
+    '''     
     trainable_params = ["model.aux_heads.tm.linear.weight", "model.aux_heads.tm.linear.bias"]
     
-    #for name, param in model_module.model.state_dict().items():
+    #
     for name, param in model_module.named_parameters():
         if name in trainable_params:
             param.requires_grad = True
@@ -536,44 +544,110 @@ def bool_type(bool_str: str):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+
     parser.add_argument(
-        "train_data_dir", type=str,
-        help="Directory containing training mmCIF files"
-    )
-    parser.add_argument(
-        "train_alignment_dir", type=str,
-        help="Directory containing precomputed training alignments"
-    )
-    parser.add_argument(
-        "template_mmcif_dir", type=str,
+        "--template_mmcif_dir", type=str, default=None,
         help="Directory containing mmCIF files to search for templates"
     )
     parser.add_argument(
-        "output_dir", type=str,
+        "--output_dir", type=str, default="/tmp",
         help='''Directory in which to output checkpoints, logs, etc. Ignored
                 if not on rank 0'''
     )
     parser.add_argument(
-        "max_template_date", type=str,
+        "--max_template_date", type=str, default="2021-09-30",
         help='''Cutoff for all templates. In training mode, templates are also 
                 filtered by the release date of the target'''
     )
+
     parser.add_argument(
-        "--train_mmcif_data_cache_path", type=str, default=None,
-        help="Path to the json file which records all the information of mmcif structures used during training"
+        "--cache_dir_path", type=str, default="/home/abhinav22/Documents/data/openfold_training/oligomers/running_cache",
+        help="Path to the json file which records all the information of distillation structures (mmcif) used during training"
     )
+    
     parser.add_argument(
         "--use_single_seq_mode", type=str, default=False,
         help="Use single sequence embeddings instead of MSAs."
     )
+    
     parser.add_argument(
-        "--distillation_data_dir", type=str, default=None,
+        "--interacting_data_dir", type=str, default=None,
         help="Directory containing training PDB files"
     )
     parser.add_argument(
-        "--distillation_alignment_dir", type=str, default=None,
+        "--interacting_alignment_dir", type=str, default=None,
         help="Directory containing precomputed distillation alignments"
     )
+    parser.add_argument(
+        "--interacting_mmcif_data_cache_path", type=str, default=None,
+        help="Path to the json file which records all the information of distillation structures (mmcif) used during training"
+    )
+    
+    parser.add_argument(
+        "--non_interacting_data_dir", type=str, default=None,
+        help="Directory containing training PDB files"
+    )
+    parser.add_argument(
+        "--non_interacting_alignment_dir", type=str, default=None,
+        help="Directory containing precomputed distillation alignments"
+    )
+    parser.add_argument(
+        "--non_interacting_mmcif_data_cache_path", type=str, default=None,
+        help="Path to the json file which records all the information of distillation structures (mmcif) used during training"
+    )
+    
+    parser.add_argument(
+        "--interacting_ddi_data_dir", type=str, default=None,
+        help="Directory containing training PDB files"
+    )
+    parser.add_argument(
+        "--interacting_ddi_alignment_dir", type=str, default=None,
+        help="Directory containing precomputed distillation alignments"
+    )
+    parser.add_argument(
+        "--interacting_ddi_mmcif_data_cache_path", type=str, default=None,
+        help="Path to the json file which records all the information of distillation structures (mmcif) used during training"
+    )
+    
+    parser.add_argument(
+        "--non_interacting_ddi_data_dir", type=str, default=None,
+        help="Directory containing training PDB files"
+    )
+    parser.add_argument(
+        "--non_interacting_ddi_alignment_dir", type=str, default=None,
+        help="Directory containing precomputed distillation alignments"
+    )
+    parser.add_argument(
+        "--non_interacting_ddi_mmcif_data_cache_path", type=str, default=None,
+        help="Path to the json file which records all the information of distillation structures (mmcif) used during training"
+    )
+    
+    parser.add_argument(
+        "--monomer_data_dir", type=str, default=None,
+        help="Directory containing monomer mmCIF files - each file with one chain"
+    )
+    parser.add_argument(
+        "--monomer_alignment_dir", type=str, default=None,
+        help="Directory containing precomputed monomer alignments"
+    )
+    parser.add_argument(
+        "--monomer_mmcif_data_cache_path", type=str, default=None,
+        help="path to the json file which records all the information of monomer mmcif structures"
+    )
+    
+    parser.add_argument(
+        "--monomer_distillation_data_dir", type=str, default=None,
+        help="Directory containing distillation monomer mmCIF files"
+    )
+    parser.add_argument(
+        "--monomer_distillation_alignment_dir", type=str, default=None,
+        help="Directory containing precomputed monomer distillation alignments"
+    )
+    parser.add_argument(
+        "--monomer_distillation_mmcif_data_cache_path", type=str, default=None,
+        help="path to the json file which records all the information of mmcif structures used during monomer distillation training"
+    )
+    
     parser.add_argument(
         "--val_data_dir", type=str, default=None,
         help="Directory containing validation mmCIF files"
@@ -584,6 +658,18 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--val_mmcif_data_cache_path", type=str, default=None,
+        help="path to the json file which records all the information of mmcif structures used during validation"
+    )
+    parser.add_argument(
+        "--val_non_interacting_data_dir", type=str, default=None,
+        help="Directory containing validation mmCIF files"
+    )
+    parser.add_argument(
+        "--val_non_interacting_alignment_dir", type=str, default=None,
+        help="Directory containing precomputed validation alignments"
+    )
+    parser.add_argument(
+        "--val_non_interacting_mmcif_data_cache_path", type=str, default=None,
         help="path to the json file which records all the information of mmcif structures used during validation"
     )
     parser.add_argument(
@@ -623,8 +709,8 @@ if __name__ == "__main__":
         help="Path to DeepSpeed config. If not provided, DeepSpeed is disabled"
     )
     parser.add_argument(
-        "--checkpoint_every_epoch", action="store_true", default=False,
-        help="""Whether to checkpoint at the end of every training epoch"""
+        "--checkpoint_every_epoch", type=int, default=1,
+        help="""Checkpoint at the end of every n training epoch"""
     )
     parser.add_argument(
         "--early_stopping", type=bool_type, default=False,
@@ -715,15 +801,46 @@ if __name__ == "__main__":
         )
     )
     parser.add_argument(
-        "--_distillation_structure_index_path", type=str, default=None,
+        "--monomer_structure_index_path", type=str, default=None,
     )
     parser.add_argument(
-        "--alignment_index_path", type=str, default=None,
+        "--monomer_distillation_structure_index_path", type=str, default=None,
+    )
+    parser.add_argument(
+        "--interacting_structure_index_path", type=str, default=None,
+    )
+    parser.add_argument(
+        "--non_interacting_structure_index_path", type=str, default=None,
+    )
+    parser.add_argument(
+        "--interacting_ddi_structure_index_path", type=str, default=None,
+    )
+    parser.add_argument(
+        "--non_interacting_ddi_structure_index_path", type=str, default=None,
+    )
+    parser.add_argument(
+        "--monomer_alignment_index_path", type=str, default=None,
         help="Training alignment index. See the README for instructions."
     )
     parser.add_argument(
-        "--distillation_alignment_index_path", type=str, default=None,
-        help="Distillation alignment index. See the README for instructions."
+        "--monomer_distillation_alignment_index_path", type=str, default=None,
+        help="Training alignment index. See the README for instructions."
+    )
+    parser.add_argument(
+        "--interacting_alignment_index_path", type=str, default=None,
+        help="Training alignment index. See the README for instructions."
+    )
+    parser.add_argument(
+        "--non_interacting_alignment_index_path", type=str, default=None,
+        help="Training alignment index. See the README for instructions."
+    )
+    parser.add_argument(
+        "--interacting_ddi_alignment_index_path", type=str, default=None,
+        help="Training alignment index. See the README for instructions."
+    )
+    parser.add_argument(
+        "--non_interacting_ddi_alignment_index_path", type=str, default=None,
+        help="Training alignment index. See the README for instructions."
     )
     parser.add_argument(
         "--experiment_config_json", default="", help="Path to a json file with custom config values to overwrite config setting",

@@ -168,7 +168,7 @@ def run_model(model, batch, tag, output_dir):
 
 
 def prep_output(out, batch, feature_dict, feature_processor, config_preset, multimer_ri_gap, subtract_plddt):
-    plddt = out["plddt"]
+    plddt = out["plddt"]    
 
     plddt_b_factors = numpy.repeat(
         plddt[..., None], residue_constants.atom_type_num, axis=-1

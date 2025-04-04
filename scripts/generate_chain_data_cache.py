@@ -25,6 +25,7 @@ def parse_file(
         with open(os.path.join(args.data_dir, f), "r") as fp:
             mmcif_string = fp.read()
         mmcif = parse(file_id=file_id, mmcif_string=mmcif_string)
+        print(mmcif)
         if mmcif.mmcif_object is None:
             logging.info(f"Could not parse {f}. Skipping...")
             return {}

@@ -425,8 +425,8 @@ config = mlc.ConfigDict(
                 "max_extra_msa": 1024,
                 "max_template_hits": 4,
                 "max_templates": 4,
-                "crop": False, 
-                "crop_size": None, 
+                "crop": False,
+                "crop_size": None,
                 "spatial_crop_prob": None,
                 "interface_threshold": None,
                 "supervised": True,
@@ -579,7 +579,7 @@ config = mlc.ConfigDict(
                     "pair_dropout": 0.25,
                     "opm_first": False,
                     "fuse_projection_weights": False,
-                    "clear_cache_between_blocks": True, #False #modified
+                    "clear_cache_between_blocks": False,
                     "tune_chunk_size": tune_chunk_size,
                     "inf": 1e9,
                     "eps": eps,  # 1e-10,
@@ -605,7 +605,7 @@ config = mlc.ConfigDict(
                 "opm_first": False,
                 "fuse_projection_weights": False,
                 "blocks_per_ckpt": blocks_per_ckpt,
-                "clear_cache_between_blocks": False, #False #modified
+                "clear_cache_between_blocks": False,
                 "tune_chunk_size": tune_chunk_size,
                 "inf": 1e9,
                 "eps": eps,  # 1e-10,
@@ -823,8 +823,8 @@ multimer_config_update = mlc.ConfigDict({
         "eval": {
             "max_msa_clusters": 508,
             "max_extra_msa": 2048,
-            "crop": False, #False #modified
-            "crop_size": None, #None #modified
+            "crop": False,
+            "crop_size": None,
             "spatial_crop_prob": 0.5,
             "interface_threshold": 10.,
         },
@@ -832,7 +832,7 @@ multimer_config_update = mlc.ConfigDict({
             "max_msa_clusters": 508,
             "max_extra_msa": 2048,
             "block_delete_msa" : False,
-            "crop_size": 640, #640 #modified
+            "crop_size": 640,
             "spatial_crop_prob": 0.5,
             "interface_threshold": 10.,
             "clamp_prob": 1.,

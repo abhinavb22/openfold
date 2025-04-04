@@ -130,10 +130,9 @@ def compute_fape(
     error_dist = torch.sqrt(
         torch.sum((local_pred_pos - local_target_pos) ** 2, dim=-1) + eps
     )
-
+    #print("error_dist", error_dist[...,100,:], flush=True)
     if l1_clamp_distance is not None:
         error_dist = torch.clamp(error_dist, min=0, max=l1_clamp_distance)
-
     normed_error = error_dist / length_scale
     normed_error = normed_error * frames_mask[..., None]
     normed_error = normed_error * positions_mask[..., None, :]
@@ -141,7 +140,7 @@ def compute_fape(
     if pair_mask is not None:
         normed_error = normed_error * pair_mask
         normed_error = torch.sum(normed_error, dim=(-1, -2))
-
+        #print("normed_error", normed_error, flush=True)
         mask = frames_mask[..., None] * positions_mask[..., None, :] * pair_mask
         norm_factor = torch.sum(mask, dim=(-2, -1))
 
@@ -163,6 +162,7 @@ def compute_fape(
         normed_error = torch.sum(normed_error, dim=-1)
         normed_error = normed_error / (eps + torch.sum(positions_mask, dim=-1))
 
+    #print("normed_error2", normed_error, flush=True)
     return normed_error
 
 

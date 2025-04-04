@@ -14,6 +14,7 @@
 # limitations under the License.
 import gzip
 import os
+import pickle as pkl
 import copy
 import collections
 import contextlib
@@ -149,7 +150,6 @@ def make_mmcif_features(
     )
 
     mmcif_feats["is_distillation"] = np.array(0., dtype=np.float32)
-
     return mmcif_feats
 
 
@@ -217,6 +217,7 @@ def make_msa_features(msas: Sequence[parsers.Msa]) -> FeatureDict:
     deletion_matrix = []
     species_ids = []
     seen_sequences = set()
+    msa_sequence_identifiers = []
     for msa_index, msa in enumerate(msas):
         if not msa:
             raise ValueError(
@@ -226,6 +227,7 @@ def make_msa_features(msas: Sequence[parsers.Msa]) -> FeatureDict:
             if sequence in seen_sequences:
                 continue
             seen_sequences.add(sequence)
+
             int_msa.append(
                 [residue_constants.HHBLITS_AA_TO_ID[res] for res in sequence]
             )
@@ -235,7 +237,7 @@ def make_msa_features(msas: Sequence[parsers.Msa]) -> FeatureDict:
                 msa.descriptions[sequence_index]
             )
             species_ids.append(identifiers.species_id.encode('utf-8'))
-
+            msa_sequence_identifiers.append(msa_identifiers._extract_sequence_identifier(msa.descriptions[sequence_index]).encode('utf-8'))
     num_res = len(msas[0].sequences[0])
     num_alignments = len(int_msa)
     features = {}
@@ -245,6 +247,7 @@ def make_msa_features(msas: Sequence[parsers.Msa]) -> FeatureDict:
         [num_alignments] * num_res, dtype=np.int32
     )
     features["msa_species_identifiers"] = np.array(species_ids, dtype=object)
+    features["msa_sequence_identifiers"] = np.array(msa_sequence_identifiers, dtype=object)
     return features
 
 
@@ -256,6 +259,22 @@ def run_msa_tool(
     max_sto_sequences: Optional[int] = None,
 ) -> Mapping[str, Any]:
     """Runs an MSA tool, checking if output already exists first."""
+    
+    msa_out_path_zipped = f"{msa_out_path}.gz"
+    '''
+    if os.path.exists(msa_out_path):
+        if msa_format == 'sto' and max_sto_sequences is not None:
+            print("Reading MSA file..")
+            result = {"sto":parsers.truncate_stockholm_msa(
+                msa_out_path, max_sto_sequences)}
+                
+    elif os.path.exists(msa_out_path_zipped):
+        print(msa_out_path_zipped)
+        if msa_format == 'sto' and max_sto_sequences is not None:
+            print("Reading gzipped MSA file..")                            
+            result = {"sto": parsers.truncate_stockholm_msa(msa_out_path_zipped, max_sto_sequences)}
+    '''
+    #else:
     if(msa_format == "sto" and max_sto_sequences is not None):
         result = msa_runner.query(fasta_path, max_sto_sequences)[0]
     else:
@@ -705,7 +724,7 @@ class DataPipeline:
     ) -> Mapping[str, Any]:
         msa_data = {}
         if alignment_index is not None:
-            fp = gzip.open(os.path.join(alignment_dir, alignment_index["db"]), "rb")
+            fp = open(os.path.join(alignment_dir, alignment_index["db"]), "rb")
 
             def read_msa(start, size):
                 fp.seek(start)
@@ -719,6 +738,7 @@ class DataPipeline:
                     msa = parsers.parse_a3m(
                         read_msa(start, size)
                     )
+
                 # The "hmm_output" exception is a crude way to exclude
                 # multimer template hits.
                 # Multimer "uniprot_hits" processed separately.
@@ -738,12 +758,12 @@ class DataPipeline:
                 if ext == ".a3m":
                     with open(path, "r") as fp:
                         msa = parsers.parse_a3m(fp.read())
-                elif ext == ".sto" and filename not in ["uniprot_hits", "hmm_output"]:
+                elif ext == ".sto" and filename not in ["uniprot_hits", "hmm_output", "pdb_hits"]:
                     with open(path, "r") as fp:
                         msa = parsers.parse_stockholm(
                             fp.read()
                         )
-                elif ext == ".sto.gz" and filename not in ["uniprot_hits", "hmm_output"]:
+                elif ext == ".gz" and filename.endswith(".sto") and filename not in ["uniprot_hits.sto", "hmm_output.sto", "pdb_hits.sto"] and os.path.getsize(path)>39: #empty gzip has 39 bytes size
                     with gzip.open(path, "rt", encoding="utf-8") as fp:
                         msa = parsers.parse_stockholm(fp.read())
         
@@ -751,7 +771,6 @@ class DataPipeline:
                     continue
 
                 msa_data[f] = msa
-
         return msa_data
 
     def _parse_template_hit_files(
@@ -792,6 +811,7 @@ class DataPipeline:
                         hits = parsers.parse_hhr(fp.read())
                     all_hits[f] = hits
                 elif(f == "hmm_output.sto"):
+                    continue # error in templates, lets skip these custom ones
                     with open(path, "r") as fp:
                         hits = parsers.parse_hmmsearch_sto(
                             fp.read(),
@@ -1187,13 +1207,14 @@ class DataPipelineMultimer:
             if not is_homomer_or_monomer:
                 all_seq_msa_features = self._all_seq_msa_features(
                     chain_alignment_dir,
-                    chain_alignment_index
+                    chain_alignment_index,
+                    chain_features
                 )
                 chain_features.update(all_seq_msa_features)
         return chain_features
 
     @staticmethod
-    def _all_seq_msa_features(alignment_dir, alignment_index):
+    def _all_seq_msa_features(alignment_dir, alignment_index, chain_features):
         """Get MSA features for unclustered uniprot, for pairing."""
         if alignment_index is not None:
             fp = open(os.path.join(alignment_dir, alignment_index["db"]), "rb")
@@ -1203,11 +1224,17 @@ class DataPipelineMultimer:
                 msa = fp.read(size).decode("utf-8")
                 return msa
 
-            start, size = next(iter((start, size) for name, start, size in alignment_index["files"]
-                                    if name == 'uniprot_hits.sto'))
-
-            msa = parsers.parse_stockholm(read_msa(start, size))
-            fp.close()
+            #start, size = next(iter((start, size) for name, start, size in alignment_index["files"] if name == 'uniprot_hits.sto'))
+            matches = [(start, size) for name, start, size in alignment_index["files"] if name == 'uniprot_hits.sto']
+            if matches:
+              start,size = matches[0]
+              msa = parsers.parse_stockholm(read_msa(start, size))            
+              fp.close()
+              all_seq_features = make_msa_features([msa])
+            else:
+              fp.close()
+              all_seq_features = {}
+            
         else:
             uniprot_msa_path = os.path.join(alignment_dir, "uniprot_hits.sto")
             if not os.path.exists(uniprot_msa_path):
@@ -1215,18 +1242,22 @@ class DataPipelineMultimer:
                 if os.path.exists(uniprot_msa_path):
                     with gzip.open(uniprot_msa_path, "rt", encoding="utf-8") as fp:
                         uniprot_msa_string = fp.read()
-                        
+                    msa = parsers.parse_stockholm(uniprot_msa_string)
+                    all_seq_features = make_msa_features([msa])
+                    
                 else:
-                    chain_id = os.path.basename(os.path.normpath(alignment_dir))
-                    raise ValueError(f"Missing 'uniprot_hits.sto' for {chain_id}. "
-                                     f"This is required for Multimer MSA pairing.")
+                    chain_id = os.path.basename(os.path.normpath(alignment_dir))                    
+                    all_seq_features = {}                    
+                    #raise ValueError(f"Missing 'uniprot_hits.sto' for {chain_id}. "
+                    #                 f"This is required for Multimer MSA pairing.")
                                      
             else:
                 with open(uniprot_msa_path, "r") as fp:
                     uniprot_msa_string = fp.read()
-            msa = parsers.parse_stockholm(uniprot_msa_string)
-
-        all_seq_features = make_msa_features([msa])
+                msa = parsers.parse_stockholm(uniprot_msa_string)
+                all_seq_features = make_msa_features([msa])
+                
+                
         valid_feats = msa_pairing.MSA_FEATURES + (
             'msa_species_identifiers',
         )
@@ -1246,7 +1277,6 @@ class DataPipelineMultimer:
             input_fasta_str = f.read()
 
         input_seqs, input_descs = parsers.parse_fasta(input_fasta_str)
-
         all_chain_features = {}
         sequence_features = {}
         is_homomer_or_monomer = len(set(input_seqs)) == 1
@@ -1263,25 +1293,34 @@ class DataPipelineMultimer:
             else:
                 chain_alignment_index = None
                 chain_alignment_dir = os.path.join(alignment_dir, desc)
+                
+            chain_features_pkl_path = os.path.join(chain_alignment_dir, "openfold_chain_features_monomer_inference.pkl") if is_homomer_or_monomer else os.path.join(chain_alignment_dir, "openfold_chain_features_multimer_inference.pkl")
+            if os.path.exists(chain_features_pkl_path):
+                with open(chain_features_pkl_path, "rb") as f:
+                    chain_features=pkl.load(f)
+            else:
+                chain_features = self._process_single_chain(
+                    chain_id=desc,
+                    sequence=seq,
+                    description=desc,
+                    chain_alignment_dir=chain_alignment_dir,
+                    chain_alignment_index=chain_alignment_index,
+                    is_homomer_or_monomer=is_homomer_or_monomer
+                )
+                
 
-            chain_features = self._process_single_chain(
-                chain_id=desc,
-                sequence=seq,
-                description=desc,
-                chain_alignment_dir=chain_alignment_dir,
-                chain_alignment_index=chain_alignment_index,
-                is_homomer_or_monomer=is_homomer_or_monomer
-            )
-
-            chain_features = convert_monomer_features(
-                chain_features,
-                chain_id=desc
-            )
+                chain_features = convert_monomer_features(
+                    chain_features,
+                    chain_id=desc
+                )
+                with open(chain_features_pkl_path, "wb") as f:
+                    pkl.dump(chain_features, f, protocol=4)
+                    
+                 
             all_chain_features[desc] = chain_features
             sequence_features[seq] = chain_features
-
+            print(desc, chain_features["seq_length"], chain_features["msa"].shape)
         all_chain_features = add_assembly_features(all_chain_features)
-
         np_example = feature_processing_multimer.pair_and_merge(
             all_chain_features=all_chain_features,
         )
@@ -1292,10 +1331,12 @@ class DataPipelineMultimer:
         return np_example
     
     def get_mmcif_features(
-            self, mmcif_object: mmcif_parsing.MmcifObject, chain_id: str
+            self, mmcif_object: mmcif_parsing.MmcifObject, chain_id: str, is_distillation:bool=False, confidence_cutoff:float=70.0
     ) -> FeatureDict:
         mmcif_feats = {}
-
+        for mmcif_chain in mmcif_object.structure.get_chains():
+            if mmcif_chain.id==chain_id:
+                b_factors = np.asarray([x.bfactor for x in mmcif_chain.get_atoms() if x.id=='CA'])
         all_atom_positions, all_atom_mask = mmcif_parsing.get_atom_coords(
             mmcif_object=mmcif_object, chain_id=chain_id
         )
@@ -1310,8 +1351,11 @@ class DataPipelineMultimer:
             [mmcif_object.header["release_date"].encode("utf-8")], dtype=object
         )
 
-        mmcif_feats["is_distillation"] = np.array(0., dtype=np.float32)
-
+        mmcif_feats["is_distillation"] = np.array(1. if is_distillation else 0., dtype=np.float32)
+        #print("is_distillation", is_distillation)
+        if(is_distillation):
+            high_confidence = b_factors > 70.0
+            mmcif_feats["all_atom_mask"] *= high_confidence[..., None]
         return mmcif_feats
 
     def process_mmcif(
@@ -1319,53 +1363,73 @@ class DataPipelineMultimer:
             mmcif: mmcif_parsing.MmcifObject,  # parsing is expensive, so no path
             alignment_dir: str,
             alignment_index: Optional[Any] = None,
+            is_distillation:bool=False
     ) -> FeatureDict:
-
         all_chain_features = {}
         sequence_features = {}
-        is_homomer_or_monomer = len(set(list(mmcif.chain_to_seqres.values()))) == 1
+        is_homomer_or_monomer = len(set(list(mmcif.chain_to_seqres.values()))) == 1        
         for chain_id, seq in mmcif.chain_to_seqres.items():
-            desc= "_".join([mmcif.file_id, chain_id])
-            desc= ".".join([mmcif.file_id.split(".")[0], chain_id])
+            if len(mmcif.file_id.split(":"))==2:
+              desc = mmcif.file_id.split(":")[0] if chain_id =="A" else mmcif.file_id.split(":")[1]              
+            elif len(mmcif.file_id.split("_"))==2:
+              basename = mmcif.file_id.split(".")[0]
+              desc = f"{basename}.{chain_id}"
+            else:
+              desc = mmcif.file_id
+
             if seq in sequence_features:
                 all_chain_features[desc] = copy.deepcopy(
                     sequence_features[seq]
                 )
                 continue
-
             if alignment_index is not None:
                 chain_alignment_index = alignment_index.get(desc)
                 chain_alignment_dir = alignment_dir
             else:
                 chain_alignment_index = None
                 chain_alignment_dir = os.path.join(alignment_dir, desc)
+            cache_dir = "/home/abhinav22/Documents/data/openfold_training/msa_cache"
+            chain_features_pkl_path = os.path.join(cache_dir, f"{desc}_monomer_training.pkl") if is_homomer_or_monomer else os.path.join(cache_dir, f"{desc}_multimer_training.pkl")
+            
+            try:
+                with gzip.open(chain_features_pkl_path+".gz", "rb") as f:
+                    chain_features=pkl.load(f)
+                #print(f"Reading {chain_features_pkl_path}")
+            except:
+                chain_features = self._process_single_chain(
+                    chain_id=desc,
+                    sequence=seq,
+                    description=desc,
+                    chain_alignment_dir=chain_alignment_dir,
+                    chain_alignment_index=chain_alignment_index,
+                    is_homomer_or_monomer=is_homomer_or_monomer
+                )
 
-            chain_features = self._process_single_chain(
-                chain_id=desc,
-                sequence=seq,
-                description=desc,
-                chain_alignment_dir=chain_alignment_dir,
-                chain_alignment_index=chain_alignment_index,
-                is_homomer_or_monomer=is_homomer_or_monomer
-            )
-
-            chain_features = convert_monomer_features(
-                chain_features,
-                chain_id=desc
-            )
-
-            mmcif_feats = self.get_mmcif_features(mmcif, chain_id)
+                chain_features = convert_monomer_features(
+                    chain_features,
+                    chain_id=desc
+                )
+                if "assembly" in desc:
+                    with gzip.open(chain_features_pkl_path+".gz", "wb") as f:
+                        pkl.dump(chain_features, f, protocol=4)
+            
+            print(desc, chain_features["seq_length"], chain_features["msa"].shape)
+            mmcif_feats = self.get_mmcif_features(mmcif, chain_id, is_distillation=is_distillation)
             chain_features.update(mmcif_feats)
             all_chain_features[desc] = chain_features
             sequence_features[seq] = chain_features
+        try:            
+            all_chain_features = add_assembly_features(all_chain_features)
+            #print(all_chain_features.keys())
+            
+            np_example = feature_processing_multimer.pair_and_merge(
+                all_chain_features=all_chain_features,
+            )
 
-        all_chain_features = add_assembly_features(all_chain_features)
-
-        np_example = feature_processing_multimer.pair_and_merge(
-            all_chain_features=all_chain_features,
-        )
-
-        # Pad MSA to avoid zero-sized extra_msa.
-        np_example = pad_msa(np_example, 512)
-
+            # Pad MSA to avoid zero-sized extra_msa.
+            np_example = pad_msa(np_example, 512)
+        except Exception as e:
+            print("ERROR", e)
+            print(mmcif.file_id, desc)
+            raise ValueError("An Exception has occured")
         return np_example

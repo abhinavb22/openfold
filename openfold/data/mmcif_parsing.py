@@ -174,7 +174,7 @@ def mmcif_loop_to_dict(
     return {entry[index]: entry for entry in entries}
 
 
-@functools.lru_cache(16, typed=False)
+#@functools.lru_cache(16, typed=False)
 def parse(
     *, file_id: str, mmcif_string: str, catch_all_errors: bool = True
 ) -> ParsingResult:
@@ -191,7 +191,7 @@ def parse(
     Returns:
       A ParsingResult.
     """
-    errors = {}
+    errors = {}    
     try:
         parser = PDB.MMCIFParser(QUIET=True)
         handle = io.StringIO(mmcif_string)
@@ -403,7 +403,6 @@ def _get_protein_chains(
     # Get chains information for each entity. Necessary so that we can return a
     # dict keyed on chain id rather than entity.
     struct_asyms = mmcif_loop_to_list("_struct_asym.", parsed_info)
-
     entity_to_mmcif_chains = collections.defaultdict(list)
     for struct_asym in struct_asyms:
         chain_id = struct_asym["_struct_asym.id"]
@@ -414,11 +413,10 @@ def _get_protein_chains(
     valid_chains = {}
     for entity_id, seq_info in polymers.items():
         chain_ids = entity_to_mmcif_chains[entity_id]
-
         # Reject polymers without any peptide-like components, such as DNA/RNA.
         if any(
             [
-                "peptide" in chem_comps[monomer.id]["_chem_comp.type"]
+                "peptide" in chem_comps[monomer.id]["_chem_comp.type"].lower()
                 for monomer in seq_info
             ]
         ):

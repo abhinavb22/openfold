@@ -1,4 +1,6 @@
 import copy
+import pickle as pkl
+from datetime import datetime
 from functools import partial
 import json
 import logging
@@ -260,6 +262,7 @@ class OpenFoldSingleDataset(torch.utils.data.Dataset):
                     _structure_index=structure_index,
                     seqemb_mode=self.config.seqemb_mode.enabled,
                 )
+
             else:
                 raise ValueError("Extension branch missing")
         else:
@@ -297,6 +300,7 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
                  max_template_date: str,
                  config: mlc.ConfigDict,
                  mmcif_data_cache_path: Optional[str] = None,
+                 cache_dir: Optional[str]=None,
                  kalign_binary_path: str = '/usr/bin/kalign',
                  max_template_hits: int = 4,
                  obsolete_pdbs_file_path: Optional[str] = None,
@@ -355,7 +359,7 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
         super(OpenFoldSingleMultimerDataset, self).__init__()
         self.data_dir = data_dir
         self.mmcif_data_cache_path = mmcif_data_cache_path
-
+        #val_spoch_length = 500
         if self.mmcif_data_cache_path is not None:
             with open(self.mmcif_data_cache_path, "r") as infile:
                 self.mmcif_data_cache = json.load(infile)
@@ -368,7 +372,7 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
         self.alignment_index = alignment_index
         self._output_raw = _output_raw
         self._structure_index = _structure_index
-
+        self.cache_dir = cache_dir
         self.supported_exts = [".cif", ".core", ".pdb"]
 
         valid_modes = ["train", "eval", "predict"]
@@ -383,6 +387,9 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
 
         if self.mmcif_data_cache_path is not None:
             self._mmcifs = list(self.mmcif_data_cache.keys())
+            #if mode == "eval":
+            #    random.shuffle(self._mmcifs)  # Shuffle the list
+            #    self._mmcifs = self._mmcifs[:val_spoch_length]  # Select the first 'num_samples' elements
         elif self.alignment_index is not None:
             self._mmcifs = [i.split("_")[0] for i in list(alignment_index.keys())]
         elif self.alignment_dir is not None:
@@ -420,9 +427,10 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
         )
         self.feature_pipeline = feature_pipeline.FeaturePipeline(config)
 
-    def _parse_mmcif(self, path, file_id, alignment_dir, alignment_index):
-        with open(path, 'r') as f:
-            mmcif_string = f.read()
+    def _parse_mmcif(self, mmcif_string, file_id, alignment_dir, alignment_index):        
+        print(file_id, self.treat_pdb_as_distillation)         
+        #with open(path, 'r') as f:
+        #    mmcif_string = f.read()
 
         mmcif_object = mmcif_parsing.parse(
             file_id=file_id, mmcif_string=mmcif_string
@@ -438,9 +446,9 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
         data = self.data_pipeline.process_mmcif(
             mmcif=mmcif_object,
             alignment_dir=alignment_dir,
-            alignment_index=alignment_index
+            alignment_index=alignment_index,
+            is_distillation=self.treat_pdb_as_distillation
         )
-
         return data
 
     def mmcif_id_to_idx(self, mmcif_id):
@@ -451,33 +459,34 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         mmcif_id = self.idx_to_mmcif_id(idx)
-
+        #print("self.treat_pdb_as_distillation", self.treat_pdb_as_distillation)
         alignment_index = None
         if self.alignment_index is not None:
-            alignment_index = {k: v for k, v in self.alignment_index.items()
-                               if f'{mmcif_id}_' in k}
-
+            alignment_index = {k: v for k, v in self.alignment_index.items()}
+                               #if f'{mmcif_id}_' in k}                               
         if self.mode == 'train' or self.mode == 'eval':
-            path = os.path.join(self.data_dir, f"{mmcif_id}")
-            ext = None
-            
-            for e in self.supported_exts:
-                if os.path.exists(path + e):
-                    ext = e
-                    break
-
-            if ext is None:
-                raise ValueError("Invalid file type")
-
-            # TODO: Add pdb and core exts to data_pipeline for multimer
-            path += ext
-            if ext == ".cif":
-                print(path, mmcif_id, flush=True)
-                data = self._parse_mmcif(
-                    path, mmcif_id, self.alignment_dir, alignment_index,
-                )
+            if self._structure_index is not None:
+                structure_index = self._structure_index[mmcif_id]
+                db = structure_index["db"]
+                db_path = os.path.join(self.data_dir, db)
+                fp = open(db_path, "rb")
+                _, offset, length = structure_index["files"][0]
+                fp.seek(offset)
+                mmcif_string = fp.read(length).decode("utf-8")
+                fp.close()            
             else:
-                raise ValueError("Extension branch missing")
+                path = os.path.join(self.data_dir, f"{mmcif_id}.cif")
+                if os.path.exists(path):
+                    with open(path, 'r') as f:
+                        mmcif_string = f.read()
+                else:
+                    raise ValueError("Extension branch missing")
+
+            data = self._parse_mmcif(
+                mmcif_string, mmcif_id, self.alignment_dir, alignment_index
+            )
+            
+                    
         else:
             path = os.path.join(self.data_dir, f"{mmcif_id}.fasta")
             data = self.data_pipeline.process_fasta(
@@ -489,17 +498,17 @@ class OpenFoldSingleMultimerDataset(torch.utils.data.Dataset):
         if self._output_raw:
             return data
 
-        # process all_chain_features
         data = self.feature_pipeline.process_features(data,
                                                       mode=self.mode,
                                                       is_multimer=True)
-
-        # if it's inference mode, only need all_chain_features
         data["batch_idx"] = torch.tensor(
             [idx for _ in range(data["aatype"].shape[-1])],
             dtype=torch.int64,
             device=data["aatype"].device)
-
+            
+        #print(data.keys())
+        #del data["cluster_profile"], data["cluster_deletion_mean"]
+        #del data["residx_atom37_to_atom14"], data["deletion_matrix"]
         return data
 
     def __len__(self):
@@ -528,13 +537,13 @@ def aa_count_filter(seqs: list, max_single_aa_prop: float) -> bool:
     return largest_single_aa_prop <= max_single_aa_prop
 
 
-def all_seq_len_filter(seqs: list, maximum_number_of_residues:int, minimum_number_of_residues: int) -> bool:
+def all_seq_len_filter(seqs: list,minimum_number_of_residues: int) -> bool:
     """Check if the total combined sequence lengths 
     are <= maximum_numer_of_residues, and each seq has atleast
     minimum_number_of_residues"""
     total_len = sum([len(i) for i in seqs])
     minimum_length = min([len(i) for i in seqs])
-    return (minimum_length >= minimum_number_of_residues) and (total_len <= maximum_number_of_residues)
+    return minimum_length >= minimum_number_of_residues
 
 
 class OpenFoldDataset(torch.utils.data.Dataset):
@@ -588,15 +597,12 @@ class OpenFoldDataset(torch.utils.data.Dataset):
         cluster_size = cache_entry.get("cluster_size", None)
         if cluster_size is not None and cluster_size > 0:
             probabilities.append(1 / cluster_size)
-
         chain_length = len(cache_entry["seq"])
         probabilities.append((1 / 512) * (max(min(chain_length, 512), 256)))
-
         # Risk of underflow here?
         out = 1
         for p in probabilities:
             out *= p
-
         return out
 
     def looped_shuffled_dataset_idx(self, dataset_len):
@@ -701,15 +707,13 @@ class OpenFoldMultimerDataset(OpenFoldDataset):
         https://www.biorxiv.org/content/10.1101/2021.10.04.463034v2.full.pdf Supplementary section 7.1
         """
         resolution = cache_entry.get("resolution", None)
-        seqs = cache_entry["seqs"]
+        seqs = cache_entry["seqs"] if "seqs" in cache_entry else [cache_entry["seq"]]
 
         return all([resolution_filter(resolution=resolution,
                                       max_resolution=max_resolution),
                     aa_count_filter(seqs=seqs,
                                     max_single_aa_prop=max_single_aa_prop),
-                    (not is_distillation or all_seq_len_filter(seqs=seqs,
-                                                               maximum_number_of_residues=maximum_number_of_residues,
-                                                               minimum_number_of_residues=minimum_number_of_residues))])
+                    (not is_distillation or all_seq_len_filter(seqs=seqs,                                                               minimum_number_of_residues=minimum_number_of_residues))])
 
     @staticmethod
     def get_stochastic_train_filter_prob(
@@ -718,14 +722,17 @@ class OpenFoldMultimerDataset(OpenFoldDataset):
     ) -> list:
         # Stochastic filters
         cluster_sizes = cache_entry.get("cluster_sizes")
+        complex_cluster_size = cache_entry.get("complex_cluster_size")
         if cluster_sizes is not None:
-            return [1 / c if c > 0 else 1 for c in cluster_sizes]
+            #print([1 / c if c > 0 else 1 for c in cluster_sizes], flush=True)
+            return [1 / c if c > 0 else 1 for c in complex_cluster_size]
 
-        num_chains = len(cache_entry["chain_ids"])
+        num_chains = len(cache_entry["chain_ids"]) if "chain_ids" in cache_entry else 1
         return [1.] * num_chains
 
-    def looped_samples(self, dataset_idx):
+    def looped_samples(self, dataset_idx):         
         max_cache_len = int(self.epoch_len * self.probabilities[dataset_idx])
+        #print(max_cache_len, flush=True)
         dataset = self.datasets[dataset_idx]
         is_distillation = dataset.treat_pdb_as_distillation
         idx_iter = self.looped_shuffled_dataset_idx(len(dataset))
@@ -739,23 +746,25 @@ class OpenFoldMultimerDataset(OpenFoldDataset):
                 mmcif_data_cache_entry = mmcif_data_cache[mmcif_id]
                 if not self.deterministic_train_filter(cache_entry=mmcif_data_cache_entry,
                                                        is_distillation=is_distillation):
+                    #print(mmcif_id, mmcif_data_cache_entry)
                     continue
 
                 chain_probs = self.get_stochastic_train_filter_prob(
                     mmcif_data_cache_entry,
                 )
                 weights.extend([[1. - p, p] for p in chain_probs])
-                idx.extend([candidate_idx] * len(chain_probs))
-
+                #print("wts",weights,flush=True)
+                #idx.extend([candidate_idx] * len(chain_probs))
+                idx.extend([candidate_idx])
+                #print("idx",idx, flush=True)
+                
             samples = torch.multinomial(
                 torch.tensor(weights),
                 num_samples=1,
                 generator=self.generator,
             )
             samples = samples.squeeze()
-
             cache = [i for i, s in zip(idx, samples) if s]
-
             for datapoint_idx in cache:
                 yield datapoint_idx
 
@@ -857,14 +866,29 @@ class OpenFoldDataModule(pl.LightningDataModule):
                  config: mlc.ConfigDict,
                  template_mmcif_dir: str,
                  max_template_date: str,
-                 train_data_dir: Optional[str] = None,
-                 train_alignment_dir: Optional[str] = None,
-                 train_chain_data_cache_path: Optional[str] = None,
-                 distillation_data_dir: Optional[str] = None,
-                 distillation_alignment_dir: Optional[str] = None,
+                 interacting_data_dir: Optional[str] = None,
+                 interacting_alignment_dir: Optional[str] = None,
+                 interacting_mmcif_data_cache_path: Optional[str] = None,
+                 non_interacting_data_dir: Optional[str] = None,
+                 non_interacting_alignment_dir: Optional[str] = None,
+                 non_interacting_mmcif_data_cache_path: Optional[str] = None,
+                 interacting_ddi_data_dir: Optional[str] = None,
+                 interacting_ddi_alignment_dir: Optional[str] = None,
+                 interacting_ddi_mmcif_data_cache_path: Optional[str] = None,
+                 non_interacting_ddi_data_dir: Optional[str] = None,
+                 non_interacting_ddi_alignment_dir: Optional[str] = None,
+                 non_interacting_ddi_mmcif_data_cache_path: Optional[str] = None,
+                 monomer_data_dir: Optional[str] = None,
+                 monomer_alignment_dir: Optional[str] = None,
+                 monomer_mmcif_data_cache_path:Optional[str]=None,
+                 monomer_distillation_data_dir: Optional[str] = None,
+                 monomer_distillation_alignment_dir: Optional[str] = None,
+                 monomer_distillation_mmcif_data_cache_path:Optional[str]=None,
                  distillation_chain_data_cache_path: Optional[str] = None,
                  val_data_dir: Optional[str] = None,
                  val_alignment_dir: Optional[str] = None,
+                 val_non_interacting_data_dir: Optional[str] = None,
+                 val_non_interacting_alignment_dir: Optional[str] = None,
                  predict_data_dir: Optional[str] = None,
                  predict_alignment_dir: Optional[str] = None,
                  kalign_binary_path: str = '/usr/bin/kalign',
@@ -875,9 +899,18 @@ class OpenFoldDataModule(pl.LightningDataModule):
                  batch_seed: Optional[int] = None,
                  train_epoch_len: int = 50000,
                  val_epoch_len:int=10000,
-                 _distillation_structure_index_path: Optional[str] = None,
-                 alignment_index_path: Optional[str] = None,
-                 distillation_alignment_index_path: Optional[str] = None,
+                 monomer_structure_index_path: Optional[str] = None,
+                 monomer_distillation_structure_index_path: Optional[str] = None,
+                 interacting_structure_index_path: Optional[str] = None,
+                 non_interacting_structure_index_path: Optional[str] = None,
+                 interacting_ddi_structure_index_path: Optional[str] = None,
+                 non_interacting_ddi_structure_index_path: Optional[str] = None,
+                 monomer_alignment_index_path: Optional[str] = None,
+                 monomer_distillation_alignment_index_path: Optional[str] = None,
+                 interacting_alignment_index_path: Optional[str] = None,
+                 non_interacting_alignment_index_path: Optional[str] = None,
+                 interacting_ddi_alignment_index_path: Optional[str] = None,
+                 non_interacting_ddi_alignment_index_path: Optional[str] = None,
                  **kwargs
                  ):
         super(OpenFoldDataModule, self).__init__()
@@ -885,16 +918,31 @@ class OpenFoldDataModule(pl.LightningDataModule):
         self.config = config
         self.template_mmcif_dir = template_mmcif_dir
         self.max_template_date = max_template_date
-        self.train_data_dir = train_data_dir
-        self.train_alignment_dir = train_alignment_dir
-        self.train_chain_data_cache_path = train_chain_data_cache_path
-        self.distillation_data_dir = distillation_data_dir
-        self.distillation_alignment_dir = distillation_alignment_dir
+        self.interacting_data_dir = interacting_data_dir
+        self.interacting_alignment_dir = interacting_alignment_dir
+        self.interacting_mmcif_data_cache_path = interacting_mmcif_data_cache_path
+        self.non_interacting_data_dir = non_interacting_data_dir
+        self.non_interacting_alignment_dir = non_interacting_alignment_dir
+        self.non_interacting_mmcif_data_cache_path = non_interacting_mmcif_data_cache_path
+        self.interacting_ddi_data_dir = interacting_ddi_data_dir
+        self.interacting_ddi_alignment_dir = interacting_ddi_alignment_dir
+        self.interacting_ddi_mmcif_data_cache_path = interacting_ddi_mmcif_data_cache_path
+        self.non_interacting_ddi_data_dir = non_interacting_ddi_data_dir
+        self.non_interacting_ddi_alignment_dir = non_interacting_ddi_alignment_dir
+        self.non_interacting_ddi_mmcif_data_cache_path = non_interacting_ddi_mmcif_data_cache_path
+        self.monomer_data_dir = monomer_data_dir
+        self.monomer_alignment_dir = monomer_alignment_dir
+        self.monomer_mmcif_data_cache_path = monomer_mmcif_data_cache_path
+        self.monomer_distillation_data_dir = monomer_distillation_data_dir
+        self.monomer_distillation_alignment_dir = monomer_distillation_alignment_dir
+        self.monomer_distillation_mmcif_data_cache_path = monomer_distillation_mmcif_data_cache_path
         self.distillation_chain_data_cache_path = (
             distillation_chain_data_cache_path
         )
         self.val_data_dir = val_data_dir
         self.val_alignment_dir = val_alignment_dir
+        self.val_non_interacting_data_dir = val_non_interacting_data_dir
+        self.val_non_interacting_alignment_dir = val_non_interacting_alignment_dir
         self.predict_data_dir = predict_data_dir
         self.predict_alignment_dir = predict_alignment_dir
         self.kalign_binary_path = kalign_binary_path
@@ -908,17 +956,17 @@ class OpenFoldDataModule(pl.LightningDataModule):
         self.train_epoch_len = train_epoch_len
         self.val_epoch_len=val_epoch_len
 
-        if self.train_data_dir is None and self.predict_data_dir is None:
+        if self.interacting_data_dir is None and self.predict_data_dir is None:
             raise ValueError(
-                'At least one of train_data_dir or predict_data_dir must be '
+                'At least one of interacting_data_dir or predict_data_dir must be '
                 'specified'
             )
 
-        self.training_mode = self.train_data_dir is not None
+        self.training_mode = self.interacting_data_dir is not None
 
-        if self.training_mode and train_alignment_dir is None:
+        if self.training_mode and interacting_alignment_dir is None:
             raise ValueError(
-                'In training mode, train_alignment_dir must be specified'
+                'In training mode, interacting_alignment_dir must be specified'
             )
         elif not self.training_mode and predict_alignment_dir is None:
             raise ValueError(
@@ -931,20 +979,58 @@ class OpenFoldDataModule(pl.LightningDataModule):
             )
 
         # An ad-hoc measure for our particular filesystem restrictions
-        self._distillation_structure_index = None
-        if _distillation_structure_index_path is not None:
-            with open(_distillation_structure_index_path, "r") as fp:
-                self._distillation_structure_index = json.load(fp)
+        self.monomer_structure_index = None
+        self.monomer_distillation_structure_index = None
+        self.interacting_structure_index = None
+        self.non_interacting_structure_index = None
+        self.interacting_ddi_structure_index = None
+        self.non_interacting_ddi_structure_index = None
+        
+        if monomer_structure_index_path is not None:
+            with open(monomer_structure_index_path, "r") as fp:
+                self.monomer_structure_index = json.load(fp)
+        if monomer_distillation_structure_index_path is not None:
+            with open(monomer_distillation_structure_index_path, "r") as fp:
+                self.monomer_distillation_structure_index = json.load(fp)
+        if interacting_structure_index_path is not None:
+            with open(interacting_structure_index_path, "r") as fp:
+                self.interacting_structure_index = json.load(fp)
+        if non_interacting_structure_index_path is not None:
+            with open(non_interacting_structure_index_path, "r") as fp:
+                self.non_interacting_structure_index = json.load(fp)
+        if interacting_ddi_structure_index_path is not None:
+            with open(interacting_ddi_structure_index_path, "r") as fp:
+                self.interacting_ddi_structure_index = json.load(fp)
+        if non_interacting_ddi_structure_index_path is not None:
+            with open(non_interacting_ddi_structure_index_path, "r") as fp:
+                self.non_interacting_ddi_structure_index = json.load(fp)
+                
+        self.monomer_alignment_index = None
+        self.monomer_distillation_alignment_index = None
+        self.interacting_alignment_index = None
+        self.non_interacting_alignment_index = None
+        self.interacting_ddi_alignment_index = None
+        self.non_interacting_ddi_alignment_index = None
+                 
+        if monomer_alignment_index_path is not None:
+            with open(monomer_alignment_index_path, "r") as fp:
+                self.monomer_alignment_index = json.load(fp)
+        if monomer_distillation_alignment_index_path is not None:
+            with open(monomer_distillation_alignment_index_path, "r") as fp:
+                self.monomer_distillation_alignment_index = json.load(fp)
+        if interacting_alignment_index_path is not None:
+            with open(interacting_alignment_index_path, "r") as fp:
+                self.interacting_alignment_index = json.load(fp)
+        if non_interacting_alignment_index_path is not None:
+            with open(non_interacting_alignment_index_path, "r") as fp:
+                self.non_interacting_alignment_index = json.load(fp)
+        if interacting_ddi_alignment_index_path is not None:
+            with open(interacting_ddi_alignment_index_path, "r") as fp:
+                self.interacting_ddi_alignment_index = json.load(fp)
+        if non_interacting_ddi_alignment_index_path is not None:
+            with open(non_interacting_ddi_alignment_index_path, "r") as fp:
+                self.non_interacting_ddi_alignment_index = json.load(fp)
 
-        self.alignment_index = None
-        if alignment_index_path is not None:
-            with open(alignment_index_path, "r") as fp:
-                self.alignment_index = json.load(fp)
-
-        self.distillation_alignment_index = None
-        if distillation_alignment_index_path is not None:
-            with open(distillation_alignment_index_path, "r") as fp:
-                self.distillation_alignment_index = json.load(fp)
 
     def setup(self, stage=None):
         # Most of the arguments are the same for the three datasets 
@@ -979,7 +1065,7 @@ class OpenFoldDataModule(pl.LightningDataModule):
                     max_template_hits=self.config.train.max_template_hits,
                     treat_pdb_as_distillation=True,
                     mode="train",
-                    alignment_index=self.distillation_alignment_index,
+                    alignment_index=self.alignment_index,
                     _structure_index=self._distillation_structure_index,
                 )
 
@@ -1004,10 +1090,10 @@ class OpenFoldDataModule(pl.LightningDataModule):
                 epoch_len=self.train_epoch_len,
                 generator=generator,
                 _roll_at_init=False,
-            )
+            ) 
 
             if self.val_data_dir is not None:
-                '''
+                
                 self.eval_dataset = dataset_gen(
                     data_dir=self.val_data_dir,
                     alignment_dir=self.val_alignment_dir,
@@ -1023,13 +1109,14 @@ class OpenFoldDataModule(pl.LightningDataModule):
                     max_template_hits=self.config.eval.max_template_hits,
                     mode="eval",
                 )
-                self.train_dataset = OpenFoldDataset(
+                self.eval_dataset = OpenFoldDataset(
                     datasets=[eval_dataset],
                     #probabilities=probabilities,
                     epoch_len=self.val_epoch_len,
                     generator=generator,
                     _roll_at_init=False,
                 )
+                '''
             else:
                 self.eval_dataset = None
         else:
@@ -1053,6 +1140,7 @@ class OpenFoldDataModule(pl.LightningDataModule):
             dataset.reroll()
         elif stage == "eval":
             dataset = self.eval_dataset
+            dataset.reroll()
         elif stage == "predict":
             dataset = self.predict_dataset
         else:
@@ -1069,7 +1157,6 @@ class OpenFoldDataModule(pl.LightningDataModule):
             num_workers=self.config.data_module.data_loaders.num_workers,
             collate_fn=batch_collator,
         )
-
         return dl
 
     def train_dataloader(self):
@@ -1096,24 +1183,27 @@ class OpenFoldMultimerDataModule(OpenFoldDataModule):
 
     def __init__(self, config: mlc.ConfigDict,
                  template_mmcif_dir: str, max_template_date: str,
-                 train_data_dir: Optional[str] = None,
-                 train_mmcif_data_cache_path: Optional[str] = None,
+                 interacting_mmcif_data_cache_path: Optional[str] = None,
                  val_mmcif_data_cache_path: Optional[str] = None,
+                 val_non_interacting_mmcif_data_cache_path: Optional[str] = None,
+                 cache_dir_path: Optional[str]=None,
                  **kwargs):
         super(OpenFoldMultimerDataModule, self).__init__(config,
                                                          template_mmcif_dir,
                                                          max_template_date,
-                                                         train_data_dir,
                                                          **kwargs)
 
-        self.train_mmcif_data_cache_path = train_mmcif_data_cache_path
-        self.training_mode = self.train_data_dir is not None
+        self.interacting_mmcif_data_cache_path = interacting_mmcif_data_cache_path
+        self.training_mode = self.interacting_data_dir is not None
         self.val_mmcif_data_cache_path = val_mmcif_data_cache_path
+        self.val_non_interacting_mmcif_data_cache_path = val_non_interacting_mmcif_data_cache_path
+        self.cache_dir = cache_dir_path
 
     def setup(self, stage=None):
         # Most of the arguments are the same for the three datasets 
         dataset_gen = partial(OpenFoldSingleMultimerDataset,
                               template_mmcif_dir=self.template_mmcif_dir,
+                              cache_dir=self.cache_dir,
                               max_template_date=self.max_template_date,
                               config=self.config,
                               kalign_binary_path=self.kalign_binary_path,
@@ -1121,41 +1211,87 @@ class OpenFoldMultimerDataModule(OpenFoldDataModule):
                               obsolete_pdbs_file_path=self.obsolete_pdbs_file_path)
 
         if self.training_mode:
-            train_dataset = dataset_gen(
-                data_dir=self.train_data_dir,
-                mmcif_data_cache_path=self.train_mmcif_data_cache_path,
-                alignment_dir=self.train_alignment_dir,
+            #with open("/media/abhinav22/precomputed_msas/openfold_training/monomer/alignment_db/alignment_db_corrected.index", "r") as fp:
+            #    self.alignment_index = json.load(fp) 
+            monomer_dataset = dataset_gen(
+                  data_dir=self.monomer_data_dir,
+                  mmcif_data_cache_path=self.monomer_mmcif_data_cache_path,
+                  alignment_dir=self.monomer_alignment_dir,
+                  filter_path=None,
+                  max_template_hits=self.config.train.max_template_hits,
+                  shuffle_top_k_prefiltered=self.config.train.shuffle_top_k_prefiltered,
+                  treat_pdb_as_distillation=False,
+                  mode="train",
+                  alignment_index=self.monomer_alignment_index,
+                  _structure_index=self.monomer_structure_index,
+              )
+            self.alignment_index=None
+            monomer_distillation_dataset = dataset_gen(
+                data_dir=self.monomer_distillation_data_dir,
+                alignment_dir=self.monomer_distillation_alignment_dir,
+                mmcif_data_cache_path=self.monomer_distillation_mmcif_data_cache_path,
+                filter_path=None,
+                max_template_hits=self.config.train.max_template_hits,
+                treat_pdb_as_distillation=True,
+                mode="train",
+                alignment_index=self.monomer_distillation_alignment_index,
+                _structure_index=self.monomer_distillation_structure_index,
+            )
+            
+            interacting_dataset = dataset_gen(
+                data_dir=self.interacting_data_dir,
+                mmcif_data_cache_path=self.interacting_mmcif_data_cache_path,
+                alignment_dir=self.interacting_alignment_dir,
                 filter_path=self.train_filter_path,
                 max_template_hits=self.config.train.max_template_hits,
                 shuffle_top_k_prefiltered=self.config.train.shuffle_top_k_prefiltered,
                 treat_pdb_as_distillation=False,
                 mode="train",
-                alignment_index=self.alignment_index,
+                alignment_index=None,
+                _structure_index=self.interacting_structure_index,
             )
-
-            distillation_dataset = None
-            if self.distillation_data_dir is not None:
-                distillation_dataset = dataset_gen(
-                    data_dir=self.distillation_data_dir,
-                    alignment_dir=self.distillation_alignment_dir,
-                    filter_path=self.distillation_filter_path,
-                    max_template_hits=self.config.train.max_template_hits,
-                    treat_pdb_as_distillation=True,
-                    mode="train",
-                    alignment_index=self.distillation_alignment_index,
-                    _structure_index=self._distillation_structure_index,
-                )
-
-                d_prob = self.config.train.distillation_prob
-
-            if distillation_dataset is not None:
-                datasets = [train_dataset, distillation_dataset]
-                d_prob = self.config.train.distillation_prob
-                probabilities = [1. - d_prob, d_prob]
-            else:
-                datasets = [train_dataset]
-                probabilities = [1.]
-
+            non_interacting_dataset = dataset_gen(
+                data_dir=self.non_interacting_data_dir,
+                mmcif_data_cache_path=self.non_interacting_mmcif_data_cache_path,
+                alignment_dir=self.non_interacting_alignment_dir,
+                filter_path=None,
+                max_template_hits=self.config.train.max_template_hits,
+                shuffle_top_k_prefiltered=self.config.train.shuffle_top_k_prefiltered,
+                treat_pdb_as_distillation=False,
+                mode="train",
+                alignment_index=None,
+                _structure_index=self.non_interacting_structure_index,
+            )
+            #with open("/media/abhinav22/precomputed_msas/openfold_training/ddi/alignment_index_combined.json", "r") as fp:
+            #    self.alignment_index = json.load(fp)                
+            interacting_ddi_dataset = dataset_gen(
+                data_dir=self.interacting_ddi_data_dir,
+                alignment_dir=self.interacting_ddi_alignment_dir,
+                mmcif_data_cache_path=self.interacting_ddi_mmcif_data_cache_path,
+                filter_path=None,
+                max_template_hits=self.config.train.max_template_hits,
+                treat_pdb_as_distillation=True,
+                mode="train",
+                alignment_index=self.interacting_ddi_alignment_index,
+                _structure_index=self.interacting_ddi_structure_index,
+            )
+            non_interacting_ddi_dataset = dataset_gen(
+                data_dir=self.non_interacting_ddi_data_dir,
+                alignment_dir=self.non_interacting_ddi_alignment_dir,
+                mmcif_data_cache_path=self.non_interacting_ddi_mmcif_data_cache_path,
+                filter_path=None,
+                max_template_hits=self.config.train.max_template_hits,
+                treat_pdb_as_distillation=True,
+                mode="train",
+                alignment_index=self.non_interacting_ddi_alignment_index,
+                _structure_index=self.non_interacting_ddi_structure_index,
+            )                                    
+            
+            datasets = [interacting_dataset, non_interacting_dataset,
+                        interacting_ddi_dataset, non_interacting_ddi_dataset,
+                        monomer_dataset, monomer_distillation_dataset]
+            probabilities = [0.2, 0.2, 0.2, 0.2, 0.1, 0.1]
+            #probabilities = [0.4, 0.0, 0.4, 0.0, 0.1, 0.1]
             generator = None
             if self.batch_seed is not None:
                 generator = torch.Generator()
@@ -1180,17 +1316,27 @@ class OpenFoldMultimerDataModule(OpenFoldDataModule):
                     mode="eval",
                 )
                 '''
-                probabilities = [1.]
+                probabilities = [0.5, 0.5]
                 eval_dataset = dataset_gen(
                     data_dir=self.val_data_dir,
                     alignment_dir=self.val_alignment_dir,
                     mmcif_data_cache_path=self.val_mmcif_data_cache_path,
                     filter_path=None,
                     max_template_hits=self.config.eval.max_template_hits,
+                    treat_pdb_as_distillation=False,
+                    mode="eval",
+                )
+                eval_non_interacting_dataset = dataset_gen(
+                    data_dir=self.val_non_interacting_data_dir,
+                    alignment_dir=self.val_non_interacting_alignment_dir,
+                    mmcif_data_cache_path=self.val_non_interacting_mmcif_data_cache_path,
+                    filter_path=None,
+                    max_template_hits=self.config.eval.max_template_hits,
+                    treat_pdb_as_distillation=False,
                     mode="eval",
                 )
                 self.eval_dataset = OpenFoldMultimerDataset(
-                    datasets=[eval_dataset],
+                    datasets=[eval_dataset, eval_non_interacting_dataset],
                     probabilities=probabilities,
                     epoch_len=self.val_epoch_len,
                     generator=generator,

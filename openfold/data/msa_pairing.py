@@ -54,7 +54,7 @@ CHAIN_FEATURES = ('num_alignments', 'seq_length')
 
 
 def create_paired_features(
-    chains: Iterable[Mapping[str, np.ndarray]],
+    chains: Iterable[Mapping[str, np.ndarray]], force_concat_by_seq_identifier=False,
 ) ->  List[Mapping[str, np.ndarray]]:
   """Returns the original chains with paired NUM_SEQ features.
 
@@ -65,9 +65,26 @@ def create_paired_features(
     A list of feature dictionaries with sequence features including only
     rows to be paired.
   """
+  for chain in chains:
+    if 'msa_all_seq' not in chain:
+      force_concat_by_seq_identifier=True
+      
+  '''
+  If there are no msa_all_seq, (coz no uniprot_hits.sto), we simply
+  use other msa to pair by matching the desc.
+  This works only for domain-domain interactions since these are present
+  with a protein, we simply map both domain msas to their 
+  common proteins and pair the msa sequences. Our hack is to replace 
+  msa_species_identifiers with msa_sequence_identifiers and rest works fine below
+  
+  '''
+  if force_concat_by_seq_identifier:
+    for chain in chains:      
+      chain.update({f"{k}_all_seq":chain[k] for k in chain if k in MSA_FEATURES})
+      chain['msa_species_identifiers_all_seq'] = chain['msa_sequence_identifiers']
+      
   chains = list(chains)
   chain_keys = chains[0].keys()
-
   if len(chains) < 2:
     return chains
   else:
@@ -131,6 +148,7 @@ def _make_msa_df(chain_features: Mapping[str, np.ndarray]) -> pd.DataFrame:
       'msa_similarity': per_seq_similarity,
       'gap': per_seq_gap
   })
+
   return msa_df
 
 
@@ -194,7 +212,8 @@ def pair_sequences(
     common_species.update(set(species_dict))
 
   common_species = sorted(common_species)
-  common_species.remove(b'')  # Remove target sequence species.
+  if b'' in common_species:
+    common_species.remove(b'')  # Remove target sequence species.
 
   all_paired_msa_rows = [np.zeros(len(examples), int)]
   all_paired_msa_rows_dict = {k: [] for k in range(num_examples)}
@@ -231,7 +250,28 @@ def pair_sequences(
   }
   return all_paired_msa_rows_dict
 
+def pair_sequences_simple(
+    examples: List[Mapping[str, np.ndarray]],
+) -> Dict[int, np.ndarray]:
+  """Returns indices for paired MSA sequences across chains."""
 
+  num_examples = len(examples)
+  msa_size = [len(chain_features['msa']) for chain_features in examples]
+  min_msa_size = min(msa_size)
+  indices = np.arange(min_msa_size)
+  paired_msa_rows = np.column_stack(np.asarray([indices for x in examples]))
+
+  all_paired_msa_rows_dict = {k: [] for k in range(num_examples)}
+  all_paired_msa_rows_dict[num_examples] = [np.zeros(len(examples), int)]
+  all_paired_msa_rows_dict[num_examples].extend(paired_msa_rows)
+  
+  
+  all_paired_msa_rows_dict = {
+      num_examples: np.array(paired_msa_rows) for
+      num_examples, paired_msa_rows in all_paired_msa_rows_dict.items()
+  }
+  return all_paired_msa_rows_dict
+  
 def reorder_paired_rows(all_paired_msa_rows_dict: Dict[int, np.ndarray]
                         ) -> np.ndarray:
   """Creates a list of indices of paired MSA rows across chains.
@@ -248,7 +288,6 @@ def reorder_paired_rows(all_paired_msa_rows_dict: Dict[int, np.ndarray]
       2) e-values
   """
   all_paired_msa_rows = []
-
   for num_pairings in sorted(all_paired_msa_rows_dict, reverse=True):
     paired_rows = all_paired_msa_rows_dict[num_pairings]
     paired_rows_product = abs(np.array([np.prod(rows) for rows in paired_rows]))

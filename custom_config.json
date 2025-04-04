@@ -4,7 +4,12 @@
 		"data.data_module.data_loaders.num_workers":10,
 		"globals.use_deepspeed_evo_attention":true,
 		"data.eval.crop": true,		
-		"data.eval.crop_size": 128,
-		"data.train.crop_size": 128,
-		"model.recycle_early_stop_tolerance":-1			
+		"data.eval.crop_size": 512,
+		"data.train.crop_size": 512,
+		"loss.violation.clash_overlap_tolerance":1.5,
+		"loss.violation.weight":1.0,
+		"loss.fape.intra_chain_backbone.weight":1.0,
+		"loss.fape.interface_backbone.weight":1.0,
+		"loss.fape.weight":1.0,
+		"model.recycle_early_stop_tolerance":-1
 }
